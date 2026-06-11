@@ -174,7 +174,7 @@
                 공통 7유형 문제 → Anthropic API 자동생성
                 풀이 기록 → '기록' 시트
    =========================================================== */
-const TIMER = { blankMC:15, blankWrite:25, wordMC:15, sentMC:15, grammarMC:20, arrange:60 };
+const TIMER = { blankMC:15, blankWrite:25, wordMC:15, wordWrite:60, sentMC:15, grammarMC:20, arrange:60 };
 const FEEDBACK_MS = 1200; // 정답/오답 보여주고 자동으로 다음 넘어가는 시간(ms)
 // ↑ 시간 제한(초). 여기 숫자만 바꾸면 전체 적용.
 
@@ -530,14 +530,14 @@ function scWordQuiz(mode, subset){
       inner+=`<div class="opts" id="opts">${opts.map((o,i)=>`<div class="opt" data-v="${o}" onclick="window.__pick(this)"><span class="ci">${CIRC[i]}</span><span>${o}</span></div>`).join('')}</div><div class="fb" id="fb"></div>`; }
     inner+=`</div></div><div class="bar"><button class="btn primary" id="chk" onclick="window.__check()">${idx<list.length-1?'다음 →':'결과 보기'}</button></div>`;
     show(inner);
-    startTimer(TIMER.wordMC,()=>window.__check(true));
+    startTimer(mode===2?TIMER.wordWrite:TIMER.wordMC,()=>window.__check(true));
     window.__sel=null; let answered=false;
     window.__pick=el=>{if(answered)return;document.querySelectorAll('#opts .opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');window.__sel=el.dataset.v;};
     function adv(){ idx++; idx<list.length?render():scResult('1차시 단어',score,list.length,
       wrongDetail,
       {restart:()=>scWordQuiz(mode), retry: wrongItems.length?()=>scWordQuiz(mode,wrongItems.slice()):null}); }
     window.__check=(t=false)=>{ if(answered)return; let correct, mine;
-      if(mode===2){ mine=(document.getElementById('wi').value||'').trim(); correct=mine.toLowerCase()===answer.toLowerCase(); }
+      if(mode===2){ mine=(document.getElementById('wi').value||'').trim(); correct=normWord(mine)===normWord(answer); }
       else if(!window.__sel&&!t){alert('답을 선택하세요');return;}
       answered=true; stopTimer();
       if(mode!==2){document.querySelectorAll('#opts .opt').forEach(o=>{if(o.dataset.v===answer)o.classList.add('ok');else if(o.dataset.v===window.__sel)o.classList.add('no');}); correct=window.__sel===answer; mine=window.__sel;}
@@ -553,6 +553,7 @@ function scWordQuiz(mode, subset){
 /* ---------- 2차시: 영어 빈칸 / 어법 선택 (본문 통째) ---------- */
 function escR(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function norm(x){return (x||'').toLowerCase().replace(/[".,!?']/g,'').replace(/\s+/g,' ').trim();}
+function normWord(x){return (x||'').toLowerCase().replace(/\.{2,}|…|[~()\[\]{}\/.,!?"';:]/g,' ').replace(/\s+/g,' ').trim();}
 function scSentSrc(){
   show(`<h1>2차시 · 문장</h1><p class="sub">무엇을 풀까요?</p>
     <div class="bigcards c2">
@@ -900,5 +901,4 @@ nav=[scLogin]; scLogin();
 </script>
 </body>
 </html>
-
 
