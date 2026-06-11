@@ -511,7 +511,10 @@ async function scWordMenu(){
     </div>`);
 }
 function scWordQuiz(mode, subset){
-  const list = subset && subset.length ? subset : WORDS;
+  const base = subset && subset.length ? subset : WORDS;
+  // 1-4(영영풀이) 단계는 영영풀이가 있는 단어만 출제
+  const list = (mode===3) ? base.filter(w=>w.def && w.def.trim()) : base;
+  if(mode===3 && !list.length){ alert('이 단원은 영영풀이가 등록된 단어가 없어요.'); goBack(); return; }
   let idx=0,score=0,wrongItems=[],wrongDetail=[];
   function render(){
     const w=list[idx]; let stem,opts,answer,pool;
@@ -897,4 +900,5 @@ nav=[scLogin]; scLogin();
 </script>
 </body>
 </html>
+
 
