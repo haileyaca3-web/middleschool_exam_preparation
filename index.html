@@ -286,8 +286,7 @@ function scLogin(){
     <p class="sub" style="margin:6px 0 22px">헤일리 중등부</p>
     <input id="loginId" placeholder="아이디" value="${ST.id||''}"><input id="loginPw" placeholder="비밀번호" type="password">
     <button class="btn primary" style="width:100%;margin-top:8px" id="loginBtn" onclick="doLogin()">로그인</button>
-    <button class="teacherlink" onclick="ST.name='테스트'; ST.id='test'; go(scGrade)">바로 입장 (확인용)</button>
-    <button class="teacherlink" onclick="go(scTeacher)">선생님</button>
+    <button class="teacherlink" onclick="go(scTeacher)">선생님 페이지</button>
     <div class="note" id="loginMsg" style="display:none;text-align:center"></div>
   </div>`);
   backBtn.style.display='none';
