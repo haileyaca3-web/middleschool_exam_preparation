@@ -48,7 +48,10 @@
   .fbrow.ok{color:#0a7d4f}.fbrow.no{color:#b3261e}
   .trec{padding:8px 0;border-bottom:1px solid #e8efe9}
   .wlist{margin:6px 0 2px}
-  .wsent{color:#3a4a40;font-size:14px;line-height:1.55;margin:3px 0}
+  .wsent{color:#3a4a40;font-size:14px;line-height:1.55;margin:3px 0;white-space:pre-wrap}
+  .passbar{max-width:640px;margin:0 auto 12px;text-align:center;font-weight:800;font-size:18px;padding:13px;border-radius:14px}
+  .passbar.ok{background:#e6f7ee;color:#0a7d4f}
+  .passbar.no{background:#fdeaea;color:#c0392b}
   .bigcard{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:36px 30px;
     cursor:pointer;transition:.16s;text-align:left;font-family:inherit;display:flex;flex-direction:column;
     gap:9px;min-height:148px;justify-content:center}
@@ -408,7 +411,11 @@ function scTeacher(skipPin){
     window.__tkakao=()=>{
       const list=recs.filter(r=>r.date===today);
       if(!list.length){ alert('오늘 기록이 없어요.'); return; }
-      const txt='[헤일리 중등부] '+today+' 기록\n'+list.map(r=>`${r.name||'학생'} · ${r.title} ${r.score}/${r.total}(${r.pct}%)`).join('\n');
+      const txt='[헤일리 중등부] '+today+' 기록\n\n'+list.map(r=>{
+        let s=`${r.name||'학생'} · ${r.title} ${r.score}/${r.total}(${r.pct}%)`;
+        if(r.wrong&&r.wrong.length){ s+='\n  [틀린 것]\n'+r.wrong.map(w=>'  • '+w).join('\n'); }
+        return s;
+      }).join('\n\n');
       if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(()=>alert('복사됐어요! 카톡에 붙여넣어 보내세요.')); }
       else prompt('아래 내용을 복사해서 카톡으로 보내세요', txt);
     };
@@ -504,33 +511,36 @@ async function scWordMenu(){
         <span class="stp">${s[0]}</span><div class="nm" style="font-size:21px">${s[1]}</div></button>`).join('')}
     </div>`);
 }
-function scWordQuiz(mode){
-  let idx=0,score=0;
+function scWordQuiz(mode, subset){
+  const list = subset && subset.length ? subset : WORDS;
+  let idx=0,score=0,wrongItems=[],wrongDetail=[];
   function render(){
-    const w=WORDS[idx]; let stem,opts,answer,pool;
+    const w=list[idx]; let stem,opts,answer,pool;
     if(mode===0){stem=w.en;pool=WORDS.map(x=>x.ko);answer=w.ko;}
     else if(mode===1){stem=w.ko;pool=WORDS.map(x=>x.en);answer=w.en;}
     else if(mode===3){stem=`"${w.def}"`;pool=WORDS.map(x=>x.en);answer=w.en;}
     else {stem=w.ko;answer=w.en;}
     const tag=['1-1 영→한','1-2 한→영','1-3 직접쓰기','1-4 영영풀이'][mode];
-    let inner=`<div class="qwrap"><div class="qhead"><span class="qtag">${tag}</span><span class="qnum">${idx+1} / ${WORDS.length}</span></div>
+    let inner=`<div class="qwrap"><div class="qhead"><span class="qtag">${tag}</span><span class="qnum">${idx+1} / ${list.length}</span></div>
       <div class="qcard"><div class="stem">${stem}</div>`;
     if(mode===2){ inner+=`<input class="winput" id="wi" placeholder="영어로 입력"><div class="fb" id="fb"></div>`; }
     else { opts=makeOpts(answer,pool);
       inner+=`<div class="opts" id="opts">${opts.map((o,i)=>`<div class="opt" data-v="${o}" onclick="window.__pick(this)"><span class="ci">${CIRC[i]}</span><span>${o}</span></div>`).join('')}</div><div class="fb" id="fb"></div>`; }
-    inner+=`</div></div><div class="bar"><button class="btn primary" id="chk" onclick="window.__check()">${idx<WORDS.length-1?'다음 →':'결과 보기'}</button></div>`;
+    inner+=`</div></div><div class="bar"><button class="btn primary" id="chk" onclick="window.__check()">${idx<list.length-1?'다음 →':'결과 보기'}</button></div>`;
     show(inner);
     startTimer(TIMER.wordMC,()=>window.__check(true));
     window.__sel=null; let answered=false;
     window.__pick=el=>{if(answered)return;document.querySelectorAll('#opts .opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');window.__sel=el.dataset.v;};
-    function adv(){ idx++; idx<WORDS.length?render():scResult('1차시 단어',score,WORDS.length); }
-    window.__check=(t=false)=>{ if(answered)return; let correct;
-      if(mode===2){const v=(document.getElementById('wi').value||'').trim().toLowerCase();correct=v===answer.toLowerCase();}
+    function adv(){ idx++; idx<list.length?render():scResult('1차시 단어',score,list.length,
+      wrongDetail,
+      {restart:()=>scWordQuiz(mode), retry: wrongItems.length?()=>scWordQuiz(mode,wrongItems.slice()):null}); }
+    window.__check=(t=false)=>{ if(answered)return; let correct, mine;
+      if(mode===2){ mine=(document.getElementById('wi').value||'').trim(); correct=mine.toLowerCase()===answer.toLowerCase(); }
       else if(!window.__sel&&!t){alert('답을 선택하세요');return;}
       answered=true; stopTimer();
-      if(mode!==2){document.querySelectorAll('#opts .opt').forEach(o=>{if(o.dataset.v===answer)o.classList.add('ok');else if(o.dataset.v===window.__sel)o.classList.add('no');}); correct=window.__sel===answer;}
+      if(mode!==2){document.querySelectorAll('#opts .opt').forEach(o=>{if(o.dataset.v===answer)o.classList.add('ok');else if(o.dataset.v===window.__sel)o.classList.add('no');}); correct=window.__sel===answer; mine=window.__sel;}
       const fb=document.getElementById('fb');fb.className='fb on '+(correct?'good':'bad');fb.textContent=correct?'정답!':(t?'시간 초과 · ':'오답 · ')+`정답: ${answer}`;
-      if(correct)score++;
+      if(correct)score++; else { wrongItems.push(w); wrongDetail.push(`${w.en} (${w.ko}) · 내 답: ${mine||'무응답'} → 정답: ${answer}`); }
       const b=document.getElementById('chk');b.disabled=true;
       setTimeout(adv,FEEDBACK_MS);
     };
@@ -549,10 +559,10 @@ function scSentSrc(){
     </div>`);
 }
 /* 영어 빈칸 — 본문 전체(cloze). 빈칸 다 채우고 '다음' 누르면 한번에 채점. 문장당 (빈칸수*15초) */
-function scCloze(){
-  const items = READING_DATA.cloze;
-  const allAns = items.flatMap(c=>c.tokens.filter(t=>t.blank!==undefined).map(t=>t.blank));
-  let idx=0,score=0,total=0,wrong=[];
+function scCloze(subset){
+  const items = subset&&subset.length ? subset : READING_DATA.cloze;
+  const allAns = READING_DATA.cloze.flatMap(c=>c.tokens.filter(t=>t.blank!==undefined).map(t=>t.blank));
+  let idx=0,score=0,total=0,wrong=[],wrongItems=[];
   function blanksOf(c){return c.tokens.map((t,i)=>({...t,i})).filter(t=>t.blank!==undefined);}
   function render(){
     const c=items[idx]; const bl=blanksOf(c);
@@ -597,17 +607,22 @@ function scCloze(){
         return (fill[k]===b.blank)?`<div class="fbrow ok">정답! <b>${escR(b.blank)}</b></div>`
           :`<div class="fbrow no">오답! ${escR(mine)} → <b>${escR(b.blank)}</b></div>`; }).join('');
       const fb=document.getElementById('fb');fb.className='fb on '+(allok?'good':'bad');fb.innerHTML=lines;
-      if(!allok){ wrong.push(c.tokens.map(x=>x.blank!==undefined?x.blank:x.t).join('')); }
+      if(!allok){
+        const full=c.tokens.map(x=>x.blank!==undefined?x.blank:x.t).join('');
+        const wp=bl.map((b,k)=> fill[k]===b.blank?null:`${fill[k]||'무응답'}→${b.blank}`).filter(Boolean).join(', ');
+        wrong.push(full+'\n   내 답→정답: '+wp); wrongItems.push(c);
+      }
       document.getElementById('chk').disabled=true;
-      setTimeout(()=>{ idx++; idx<items.length?render():scResult('2차시 영어 빈칸',score,total,wrong); }, FEEDBACK_MS);
+      setTimeout(()=>{ idx++; idx<items.length?render():scResult('2차시 영어 빈칸',score,total,wrong,
+        {restart:()=>scCloze(), retry: wrongItems.length?()=>scCloze(wrongItems.slice()):null}); }, FEEDBACK_MS);
     };
     paint();
   }
   if(!items.length){scResult('2차시 영어 빈칸',0,0);return;} render();
 }
 /* 어법 선택 — 본문 전체(choice). 문장 속 둘 중 탭 */
-function scChoice(){
-  const items = READING_DATA.choice; let idx=0,score=0,wrong=[];
+function scChoice(subset){
+  const items = subset&&subset.length ? subset : READING_DATA.choice; let idx=0,score=0,wrong=[],wrongItems=[];
   function render(){
     const c=items[idx];
     const html=c.tokens.map((t,ti)=>{ if(!t.opts) return escR(t.t);
@@ -629,17 +644,22 @@ function scChoice(){
         return (pick===tok.answer)?`<div class="fbrow ok">정답! <b>${escR(correct)}</b></div>`
           :`<div class="fbrow no">오답! ${escR(mine)} → <b>${escR(correct)}</b></div>`; }).filter(Boolean).join('');
       const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');fb.innerHTML=lines;
-      if(!ok){ wrong.push(c.tokens.map(x=>x.opts?x.opts[x.answer-1]:x.t).join('')); }
+      if(!ok){
+        const full=c.tokens.map(x=>x.opts?x.opts[x.answer-1]:x.t).join('');
+        const wp=c.tokens.map((tok,ti)=>{ if(!tok.opts)return null; const pk=window.__sel[ti]; return pk===tok.answer?null:`${tok.opts[(pk||0)-1]||'무응답'}→${tok.opts[tok.answer-1]}`; }).filter(Boolean).join(', ');
+        wrong.push(full+'\n   내 답→정답: '+wp); wrongItems.push(c);
+      }
       const b=document.getElementById('chk');b.disabled=true;
-      setTimeout(()=>{idx++; idx<items.length?render():scResult('2차시 어법 선택',score,items.length,wrong);}, FEEDBACK_MS);
+      setTimeout(()=>{idx++; idx<items.length?render():scResult('2차시 어법 선택',score,items.length,wrong,
+        {restart:()=>scChoice(), retry: wrongItems.length?()=>scChoice(wrongItems.slice()):null});}, FEEDBACK_MS);
     };
   }
   if(!items.length){scResult('2차시 어법 선택',0,0);return;} render();
 }
 
 /* ---------- 3차시: 순서 배열 — 이미지처럼 단어/구 클릭 배열 (본문 통째) ---------- */
-function scOrder(){
-  const items = READING_DATA.order; let idx=0,score=0,wrong=[];
+function scOrder(subset){
+  const items = subset&&subset.length ? subset : READING_DATA.order; let idx=0,score=0,wrong=[],wrongItems=[];
   function render(){
     const q=items[idx];
     const shuffled=q.chunks.map((c,i)=>({c,i})).sort(()=>Math.random()-.5);
@@ -671,12 +691,13 @@ function scOrder(){
       const correctOrder=q.chunks.map((c,i)=>({i,pos:ansN.indexOf(norm(c))})).sort((a,b)=>a.pos-b.pos).map(o=>o.i);
       const studentOrder=picked.map(p=>shuffled[p].i);
       const ok=studentOrder.join('|')===correctOrder.join('|');
-      if(ok)score++; else wrong.push(q.answer);
+      if(ok)score++; else { wrong.push('정답 문장: '+q.answer); wrongItems.push(q); }
       const correctChips=correctOrder.map(i=>q.chunks[i]).join(' / ');
       const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');
       fb.innerHTML=ok?'정답!':(t?'시간 초과 · ':'오답 · ')+'올바른 순서: '+escR((q.prefix?q.prefix+' / ':'')+correctChips);
       const b=document.getElementById('chk');b.disabled=true;
-      setTimeout(()=>{idx++; idx<items.length?render():scResult('3차시 순서 배열',score,items.length,wrong);}, FEEDBACK_MS);
+      setTimeout(()=>{idx++; idx<items.length?render():scResult('3차시 순서 배열',score,items.length,wrong,
+        {restart:()=>scOrder(), retry: wrongItems.length?()=>scOrder(wrongItems.slice()):null});}, FEEDBACK_MS);
     };
     paintChips();
   }
@@ -692,8 +713,8 @@ function scWriteHub(){
     </div>`);
 }
 /* 동사형 — given(원형)마다 입력칸. 동사 2개면 칸 2개 */
-function scVerb(){
-  const items = READING_DATA.verbform; let idx=0,score=0,wrong=[];
+function scVerb(subset){
+  const items = subset&&subset.length ? subset : READING_DATA.verbform; let idx=0,score=0,wrong=[],wrongItems=[];
   function render(){
     const v=items[idx]; let bi=0;
     const html=v.tokens.map(t=>{ if(t.given===undefined) return escR(t.t);
@@ -708,18 +729,23 @@ function scVerb(){
     window.__check=(t=false)=>{if(answered)return;answered=true;stopTimer(); let ok=true; const ins=document.querySelectorAll('.winline');
       ins.forEach(inp=>{ const ans=(inp.dataset.ans||'').toLowerCase(); const val=(inp.value||'').trim().toLowerCase();
         if(val===ans){inp.style.borderColor='var(--mint)';} else {inp.style.borderColor='var(--bad)';ok=false;} });
-      if(ok)score++; else wrong.push(v.tokens.map(x=>x.given!==undefined?x.answer:x.t).join(''));
+      if(ok)score++; else {
+        const full=v.tokens.map(x=>x.given!==undefined?x.answer:x.t).join('');
+        const wp=[...ins].map(inp=> (inp.value||'').trim().toLowerCase()===(inp.dataset.ans||'').toLowerCase()?null:`${(inp.value||'').trim()||'무응답'}→${inp.dataset.ans}`).filter(Boolean).join(', ');
+        wrong.push(full+'\n   내 답→정답: '+wp); wrongItems.push(v);
+      }
       const ansAll=[...ins].map(i=>i.dataset.ans).join(' , ');
       const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');fb.textContent=ok?'정답!':(t?'시간 초과 · ':'오답 · ')+`정답: ${ansAll}`;
       const b=document.getElementById('chk');b.disabled=true;
-      setTimeout(()=>{idx++;idx<items.length?render():scResult('4차시 동사형 연습',score,items.length,wrong);}, FEEDBACK_MS);
+      setTimeout(()=>{idx++;idx<items.length?render():scResult('4차시 동사형 연습',score,items.length,wrong,
+        {restart:()=>scVerb(), retry: wrongItems.length?()=>scVerb(wrongItems.slice()):null});}, FEEDBACK_MS);
     };
   }
   if(!items.length){scResult('4차시 동사형 연습',0,0);return;} render();
 }
 /* 영작 — 대소문자·온점·따옴표·띄어쓰기 무시하고 채점 */
-function scWrite(){
-  const items = READING_DATA.writing; let idx=0,score=0,wrong=[];
+function scWrite(subset){
+  const items = subset&&subset.length ? subset : READING_DATA.writing; let idx=0,score=0,wrong=[],wrongItems=[];
   function render(){
     const w=items[idx];
     show(`<div class="qwrap"><div class="qhead"><span class="qtag">4차시 · 영작</span><span class="qnum">${idx+1} / ${items.length}</span></div>
@@ -731,11 +757,13 @@ function scWrite(){
     startTimer(TIMER.blankWrite,()=>window.__check(true));
     let answered=false;
     window.__check=(t=false)=>{if(answered)return;answered=true;stopTimer();
-      const ok=norm(document.getElementById('wi').value)===norm(w.answer); if(ok)score++; else wrong.push(w.answer);
+      const typed=(document.getElementById('wi').value||'').trim();
+      const ok=norm(typed)===norm(w.answer); if(ok)score++; else { wrong.push(`${w.ko}\n   내 답: ${typed||'무응답'}\n   정답: ${w.answer}`); wrongItems.push(w); }
       const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');
       fb.innerHTML=(ok?'정답!':(t?'시간 초과 · 오답':'오답입니다'))+`<br><span style="font-weight:500">정답: ${escR(w.answer)}</span>`;
       const b=document.getElementById('chk');b.disabled=true;
-      setTimeout(()=>{idx++;idx<items.length?render():scResult('4차시 영작',score,items.length,wrong);}, FEEDBACK_MS);
+      setTimeout(()=>{idx++;idx<items.length?render():scResult('4차시 영작',score,items.length,wrong,
+        {restart:()=>scWrite(), retry: wrongItems.length?()=>scWrite(wrongItems.slice()):null});}, FEEDBACK_MS);
     };
   }
   if(!items.length){scResult('4차시 영작',0,0);return;} render();
@@ -754,10 +782,15 @@ function scGrammar(){ // 패턴 선택
     </div>
     <div class="note">패턴을 골라 풀어요. 끝까지 풀면 5차시(학교별 유형 TEST)가 열려요.</div>`);
 }
-function scGrammarQuiz(patId){
-  const list = GRAMMAR_DATA.questions.filter(q=>q.pattern===patId);
+function gQText(q){ // 문제만 (정답 표시 없이) — 오답노트용
+  const strip=s=>String(s||'').replace(/\[\[|\]\]/g,'').replace(/\n/g,' ').trim();
+  const ch=q.choices.map((c,i)=>`${CIRC[i]||(i+1)} ${strip(c)}`).join('  ');
+  return strip(q.prompt)+(q.passage&&q.passage.trim()?('\n'+strip(q.passage)):'')+'\n'+ch;
+}
+function scGrammarQuiz(patId, subset){
+  const list = subset&&subset.length ? subset : GRAMMAR_DATA.questions.filter(q=>q.pattern===patId);
   const patName = (GRAMMAR_DATA.meta.patterns.find(p=>p.id===patId)||{}).name||'';
-  let idx=0, score=0;
+  let idx=0, score=0, wrong=[], wrongItems=[];
   function render(){
     const q=list[idx]; const multi=q.answer.length>1;
     const passage = q.passage && q.passage.trim() ? `<div class="prompt">${fmtG(q.passage)}</div>`:'';
@@ -789,12 +822,13 @@ function scGrammarQuiz(patId){
       const ok = ans.length===pk.length && ans.every((v,i)=>v===pk[i]);
       document.querySelectorAll('#opts .opt').forEach(o=>{const i=+o.dataset.i;
         if(q.answer.includes(i))o.classList.add('ok'); else if(window.__picks.includes(i))o.classList.add('no');});
-      if(ok)score++;
+      if(ok)score++; else { wrong.push(gQText(q)); wrongItems.push(q); }
       const ansTxt=q.answer.map(a=>CIRC[a-1]||a).join(' ');
       const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');
       fb.innerHTML=`${ok?'정답!':(t?'시간 초과 · ':'오답 · ')}정답: ${ansTxt}<br><span style="font-weight:500">${escG(q.explanation||'')}</span>`;
       const b=document.getElementById('chk');b.disabled=true;
-      setTimeout(()=>{idx++; if(idx<list.length){render();} else { ST.grammarDone=true; scResult('5차시 '+patName,score,list.length); }}, FEEDBACK_MS);
+      setTimeout(()=>{idx++; if(idx<list.length){render();} else { ST.grammarDone=true; scResult('5차시 '+patName,score,list.length,wrong,
+        {restart:()=>scGrammarQuiz(patId), retry: wrongItems.length?()=>scGrammarQuiz(patId,wrongItems.slice()):null}); }}, FEEDBACK_MS);
     };
   }
   if(list.length===0){scResult('4차시',0,0);return;} render();
@@ -819,19 +853,30 @@ function scCommon(){
 }
 
 /* ---------- 결과 (기록 자동저장 + 내 기록 + 카톡 복사) ---------- */
-function scResult(title,score,total,wrongList){
+function scResult(title,score,total,wrongList,actions){
+  actions=actions||{};
   const pct=total?Math.round(score/total*100):0;
+  const pass = total>0 && pct>=90;
   // 자동 저장
   const rec={ name:(ST.name||'학생'), school:(ST.school?ST.school.nm:''), grade:ST.grade||'',
     title, score, total, pct, date:todayStr(), at:Date.now(), wrong:(wrongList||[]) };
   saveRec(rec);
   window.__lastRec=rec;
+  window.__restart=actions.restart||null;
+  window.__retryWrong=actions.retry||null;
+  const banner = total===0 ? '' : (pass
+    ? `<div class="passbar ok">통과! ${pct}% · 커트라인 90%</div>`
+    : `<div class="passbar no">재시험입니다 · ${pct}% (커트라인 90%)</div>`);
   show(`<div class="result"><div class="big">${pct}%</div>
     <div class="lab">${title} · ${total}문항 중 ${score}문항 정답</div></div>
+    ${banner}
     <div class="bar" style="max-width:640px">
       <button class="btn ghost" onclick="go(scMyRecords)" style="flex:1">내 기록</button>
       <button class="btn ghost" onclick="nav=[scLogin,scGrade,scLesson,scHub];scHub()" style="flex:1">다음 회차</button>
-      <button class="btn primary" onclick="goBack()" style="flex:1">다시 풀기</button>
+    </div>
+    <div class="bar" style="max-width:640px;margin-top:10px">
+      <button class="btn ghost" onclick="window.__restart?window.__restart():goBack()" style="flex:1">처음부터 다시</button>
+      ${actions.retry?`<button class="btn primary" onclick="window.__retryWrong()" style="flex:1">틀린 문제 다시 풀기</button>`:''}
     </div>
     <div class="note" id="copynote">${SHEET_API?'결과가 선생님 시트로 자동 전송됐어요.':'결과는 이 기기에 자동 저장됐어요.'}</div>`);
   backBtn.style.display='block';
@@ -843,7 +888,7 @@ function scMyRecords(){
     const wl=(r.wrong&&r.wrong.length)? `<div class="wlist">${r.wrong.map(w=>`<div class="wsent">• ${escR(w)}</div>`).join('')}</div>`:'';
     return `<div class="trec"><div class="trow"><span>${r.date} · ${r.title}</span><span>${r.score}/${r.total} (${r.pct}%)</span></div>${wl}</div>`;
   }).join('') : '<div class="trow" style="color:var(--ink-soft)">아직 기록이 없어요</div>';
-  show(`<h1>내 기록</h1><p class="sub">틀린 문장 모음 · 오답노트에 옮겨 적어요 (단어 차시 제외)</p>
+  show(`<h1>내 기록</h1><p class="sub">차시별 틀린 것 모음 · 오답노트에 옮겨 적어요 (1차시는 단어, 2~4차시는 문장, 5차시는 문제)</p>
     <div class="qcard" style="max-width:760px;margin:0 auto">${rows}</div>
     <div class="bar"><button class="btn primary" onclick="goBack()">돌아가기</button></div>`);
   backBtn.style.display='block';
