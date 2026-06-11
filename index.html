@@ -44,6 +44,11 @@
   .bigcards.c3{grid-template-columns:1fr 1fr 1fr}
   .bigcards.grade .bigcard{min-height:clamp(200px,42vh,360px);align-items:center;text-align:center}
   .bigcards.grade .bigcard .nm{font-size:32px}
+  .fbrow{margin:3px 0;font-weight:700;font-size:15px}
+  .fbrow.ok{color:#0a7d4f}.fbrow.no{color:#b3261e}
+  .trec{padding:8px 0;border-bottom:1px solid #e8efe9}
+  .wlist{margin:6px 0 2px}
+  .wsent{color:#3a4a40;font-size:14px;line-height:1.55;margin:3px 0}
   .bigcard{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:36px 30px;
     cursor:pointer;transition:.16s;text-align:left;font-family:inherit;display:flex;flex-direction:column;
     gap:9px;min-height:148px;justify-content:center}
@@ -398,8 +403,15 @@ function scTeacher(skipPin){
     <div class="qcard" style="max-width:760px;margin:0 auto;border:2px solid var(--mint)"><div style="font-weight:800;margin-bottom:8px">🆕 승인 대기 학생 (${pend.length})</div>${fmtPend(pend)}</div>
     <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:8px">오늘 기록 (${today})</div>${fmtRec(recs.filter(r=>r.date===today))}</div>
     <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:8px">어제 기록 (${yest})</div>${fmtRec(recs.filter(r=>r.date===yest))}</div>
-    <div class="bar"><button class="btn ghost" onclick="go(scLogin)">← 로그인으로</button><button class="btn primary" onclick="scTeacher(true)">새로고침</button></div>`);
+    <div class="bar"><button class="btn ghost" onclick="go(scLogin)">← 로그인으로</button><button class="btn ghost" onclick="window.__tkakao()">오늘 기록 카톡 복사</button><button class="btn primary" onclick="scTeacher(true)">새로고침</button></div>`);
     backBtn.style.display='none';
+    window.__tkakao=()=>{
+      const list=recs.filter(r=>r.date===today);
+      if(!list.length){ alert('오늘 기록이 없어요.'); return; }
+      const txt='[헤일리 중등부] '+today+' 기록\n'+list.map(r=>`${r.name||'학생'} · ${r.title} ${r.score}/${r.total}(${r.pct}%)`).join('\n');
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(()=>alert('복사됐어요! 카톡에 붙여넣어 보내세요.')); }
+      else prompt('아래 내용을 복사해서 카톡으로 보내세요', txt);
+    };
   };
 
   if(SHEET_API){
@@ -579,11 +591,13 @@ function scCloze(){
       if(fill.some(x=>x===null)&&!t){ alert('빈칸을 모두 채워주세요'); return; }
       answered=true; stopTimer();
       let allok=true;
-      bl.forEach((b,k)=>{ total++; if(fill[k]===b.blank) score++; else {allok=false; wrong.push(`문장${idx+1}-빈칸${k+1}`);} });
+      bl.forEach((b,k)=>{ total++; if(fill[k]===b.blank) score++; else allok=false; });
       paint();
-      const ansTxt=bl.map(b=>b.blank).join(' / ');
-      const fb=document.getElementById('fb');fb.className='fb on '+(allok?'good':'bad');
-      fb.innerHTML=(allok?'정답!':(t?'시간 초과 · ':'오답 · '))+`정답: ${escR(ansTxt)}`;
+      const lines=bl.map((b,k)=>{ const mine=fill[k]||'__';
+        return (fill[k]===b.blank)?`<div class="fbrow ok">정답! <b>${escR(b.blank)}</b></div>`
+          :`<div class="fbrow no">오답! ${escR(mine)} → <b>${escR(b.blank)}</b></div>`; }).join('');
+      const fb=document.getElementById('fb');fb.className='fb on '+(allok?'good':'bad');fb.innerHTML=lines;
+      if(!allok){ wrong.push(c.tokens.map(x=>x.blank!==undefined?x.blank:x.t).join('')); }
       document.getElementById('chk').disabled=true;
       setTimeout(()=>{ idx++; idx<items.length?render():scResult('2차시 영어 빈칸',score,total,wrong); }, FEEDBACK_MS);
     };
@@ -609,8 +623,13 @@ function scChoice(){
       c.tokens.forEach((tok,ti)=>{ if(!tok.opts)return; const pick=window.__sel[ti];
         document.querySelectorAll(`.optpick[data-ti="${ti}"]`).forEach(b=>{const oi=+b.dataset.oi; if(oi===tok.answer)b.classList.add('cpick-ok'); else if(oi===pick)b.classList.add('cpick-no');});
         if(pick!==tok.answer) ok=false; });
-      if(ok)score++; else wrong.push(`${idx+1}번`);
-      const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');fb.textContent=ok?'정답!':(t?'시간 초과':'오답');
+      if(ok)score++;
+      const lines=c.tokens.map((tok,ti)=>{ if(!tok.opts)return null; const pick=window.__sel[ti];
+        const correct=tok.opts[tok.answer-1], mine=tok.opts[(pick||0)-1]||'__';
+        return (pick===tok.answer)?`<div class="fbrow ok">정답! <b>${escR(correct)}</b></div>`
+          :`<div class="fbrow no">오답! ${escR(mine)} → <b>${escR(correct)}</b></div>`; }).filter(Boolean).join('');
+      const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');fb.innerHTML=lines;
+      if(!ok){ wrong.push(c.tokens.map(x=>x.opts?x.opts[x.answer-1]:x.t).join('')); }
       const b=document.getElementById('chk');b.disabled=true;
       setTimeout(()=>{idx++; idx<items.length?render():scResult('2차시 어법 선택',score,items.length,wrong);}, FEEDBACK_MS);
     };
@@ -627,7 +646,7 @@ function scOrder(){
     let picked=[];
     function paintBuilt(){
       const built=picked.map(p=>shuffled[p].c).join(' ');
-      document.getElementById('built').textContent=(q.prefix?q.prefix+' ':'')+built;
+      document.getElementById('built').textContent=built;
     }
     function paintChips(){
       document.querySelectorAll('#pool .chip').forEach((el,pos)=>{
@@ -652,8 +671,7 @@ function scOrder(){
       const correctOrder=q.chunks.map((c,i)=>({i,pos:ansN.indexOf(norm(c))})).sort((a,b)=>a.pos-b.pos).map(o=>o.i);
       const studentOrder=picked.map(p=>shuffled[p].i);
       const ok=studentOrder.join('|')===correctOrder.join('|');
-      if(ok)score++; else wrong.push(`${idx+1}번`);
-      // 올바른 칩 순서를 보기 좋게 표시
+      if(ok)score++; else wrong.push(q.answer);
       const correctChips=correctOrder.map(i=>q.chunks[i]).join(' / ');
       const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');
       fb.innerHTML=ok?'정답!':(t?'시간 초과 · ':'오답 · ')+'올바른 순서: '+escR((q.prefix?q.prefix+' / ':'')+correctChips);
@@ -690,7 +708,7 @@ function scVerb(){
     window.__check=(t=false)=>{if(answered)return;answered=true;stopTimer(); let ok=true; const ins=document.querySelectorAll('.winline');
       ins.forEach(inp=>{ const ans=(inp.dataset.ans||'').toLowerCase(); const val=(inp.value||'').trim().toLowerCase();
         if(val===ans){inp.style.borderColor='var(--mint)';} else {inp.style.borderColor='var(--bad)';ok=false;} });
-      if(ok)score++; else wrong.push(`${idx+1}번`);
+      if(ok)score++; else wrong.push(v.tokens.map(x=>x.given!==undefined?x.answer:x.t).join(''));
       const ansAll=[...ins].map(i=>i.dataset.ans).join(' , ');
       const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');fb.textContent=ok?'정답!':(t?'시간 초과 · ':'오답 · ')+`정답: ${ansAll}`;
       const b=document.getElementById('chk');b.disabled=true;
@@ -713,7 +731,7 @@ function scWrite(){
     startTimer(TIMER.blankWrite,()=>window.__check(true));
     let answered=false;
     window.__check=(t=false)=>{if(answered)return;answered=true;stopTimer();
-      const ok=norm(document.getElementById('wi').value)===norm(w.answer); if(ok)score++; else wrong.push(`${idx+1}번`);
+      const ok=norm(document.getElementById('wi').value)===norm(w.answer); if(ok)score++; else wrong.push(w.answer);
       const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');
       fb.innerHTML=(ok?'정답!':(t?'시간 초과 · 오답':'오답입니다'))+`<br><span style="font-weight:500">정답: ${escR(w.answer)}</span>`;
       const b=document.getElementById('chk');b.disabled=true;
@@ -811,33 +829,27 @@ function scResult(title,score,total,wrongList){
   show(`<div class="result"><div class="big">${pct}%</div>
     <div class="lab">${title} · ${total}문항 중 ${score}문항 정답</div></div>
     <div class="bar" style="max-width:640px">
-      <button class="btn ghost" onclick="go(scMyRecords)" style="flex:1">내 기록 보기</button>
-      <button class="btn primary" onclick="window.__kakao()" style="flex:1">카톡 복사하기</button>
-    </div>
-    <div class="bar" style="max-width:640px;margin-top:10px">
-      <button class="btn ghost" onclick="nav=[scLogin,scGrade,scSchool,scHub];scHub()" style="flex:1">차시로</button>
+      <button class="btn ghost" onclick="go(scMyRecords)" style="flex:1">내 기록</button>
+      <button class="btn ghost" onclick="nav=[scLogin,scGrade,scLesson,scHub];scHub()" style="flex:1">다음 회차</button>
       <button class="btn primary" onclick="goBack()" style="flex:1">다시 풀기</button>
     </div>
-    <div class="note" id="copynote">${SHEET_API?'결과가 선생님 시트로 자동 전송됐어요.':'결과는 이 기기에 자동 저장됐어요. \"카톡 복사하기\"로 선생님께 보낼 수 있어요.'}</div>`);
+    <div class="note" id="copynote">${SHEET_API?'결과가 선생님 시트로 자동 전송됐어요.':'결과는 이 기기에 자동 저장됐어요.'}</div>`);
   backBtn.style.display='block';
-  window.__kakao=()=>{
-    const w=rec.wrong&&rec.wrong.length?('\n틀린 문제: '+rec.wrong.join(', ')):'';
-    const txt=`[헤일리 중등부] ${rec.name} (${rec.school})\n${rec.title}\n점수: ${rec.score}/${rec.total} (${rec.pct}%)\n날짜: ${rec.date}${w}`;
-    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(()=>{document.getElementById('copynote').textContent='복사됐어요! 카톡에 붙여넣어 선생님께 보내세요.';}); }
-    else { prompt('아래 내용을 복사해서 카톡으로 보내세요', txt); }
-  };
 }
 /* 내 기록 보기 (오답노트용) */
 function scMyRecords(){
   const recs=loadRecs().slice().reverse();
-  const rows = recs.length? recs.map(r=>`<div class="trow"><span>${r.date} · ${r.title}</span><span>${r.score}/${r.total} (${r.pct}%)${r.wrong&&r.wrong.length?' · 오답 '+r.wrong.length:''}</span></div>`).join('') : '<div class="trow" style="color:var(--ink-soft)">아직 기록이 없어요</div>';
-  show(`<h1>내 기록</h1><p class="sub">차시별 결과 · 오답노트에 활용하세요</p>
+  const rows = recs.length? recs.map(r=>{
+    const wl=(r.wrong&&r.wrong.length)? `<div class="wlist">${r.wrong.map(w=>`<div class="wsent">• ${escR(w)}</div>`).join('')}</div>`:'';
+    return `<div class="trec"><div class="trow"><span>${r.date} · ${r.title}</span><span>${r.score}/${r.total} (${r.pct}%)</span></div>${wl}</div>`;
+  }).join('') : '<div class="trow" style="color:var(--ink-soft)">아직 기록이 없어요</div>';
+  show(`<h1>내 기록</h1><p class="sub">틀린 문장 모음 · 오답노트에 옮겨 적어요 (단어 차시 제외)</p>
     <div class="qcard" style="max-width:760px;margin:0 auto">${rows}</div>
     <div class="bar"><button class="btn primary" onclick="goBack()">돌아가기</button></div>`);
   backBtn.style.display='block';
 }
 
-ST.name='테스트'; ST.id='test'; nav=[scGrade]; scGrade();
+nav=[scLogin]; scLogin();
 </script>
 </body>
 </html>
