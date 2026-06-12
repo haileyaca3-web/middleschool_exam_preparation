@@ -192,7 +192,7 @@
                 공통 7유형 문제 → Anthropic API 자동생성
                 풀이 기록 → '기록' 시트
    =========================================================== */
-const TIMER = { blankMC:15, blankWrite:25, wordMC:15, wordWrite:60, sentMC:15, grammarMC:20, arrange:60 };
+const TIMER = { blankMC:15, blankWrite:25, wordMC:15, wordWrite:60, sentMC:15, grammarMC:20, arrange:60, writeS:90 };
 const FEEDBACK_MS = 1200; // 정답/오답 보여주고 자동으로 다음 넘어가는 시간(ms)
 // ↑ 시간 제한(초). 여기 숫자만 바꾸면 전체 적용.
 
@@ -830,7 +830,7 @@ function scWrite(subset){
       <input class="winput" id="wi" placeholder="영어로 작성"><div class="fb" id="fb"></div></div></div>
       <div class="bar"><button class="btn primary" id="chk" onclick="window.__check()">${idx<items.length-1?'다음 →':'결과'}</button></div>`);
     document.getElementById('wi').focus();
-    startTimer(TIMER.blankWrite,()=>window.__check(true));
+    startTimer(TIMER.writeS,()=>window.__check(true));
     let answered=false;
     window.__check=(t=false)=>{if(answered)return;answered=true;stopTimer();
       const typed=(document.getElementById('wi').value||'').trim();
