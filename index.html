@@ -49,6 +49,21 @@
   .trec{padding:8px 0;border-bottom:1px solid #e8efe9}
   .wlist{margin:6px 0 2px}
   .wsent{color:#3a4a40;font-size:14px;line-height:1.55;margin:3px 0;white-space:pre-wrap}
+  /* 선생님 페이지 — 학생별 묶기/펼침 */
+  .tstudent{border:1.5px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden;background:#fff}
+  .tstu-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;background:var(--mint-bg)}
+  .tstu-head:hover{background:var(--mint-soft)}
+  .tstu-body{padding:2px 12px 8px}
+  .trecrow{border-top:1px solid var(--line)}
+  .trecrow:first-child{border-top:none}
+  .trecrow-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 6px;cursor:pointer;font-size:15px}
+  .trecrow-head:hover{color:var(--mint-d)}
+  .trec-detail{padding:2px 8px 12px}
+  .retest{font-size:12px;font-weight:800;color:var(--bad);background:var(--bad-bg);border-radius:99px;padding:3px 10px;margin-left:8px}
+  .passb{font-size:12px;font-weight:800;color:var(--mint-d);background:var(--mint-soft);border-radius:99px;padding:3px 10px;margin-left:8px}
+  .copybtn{font-family:inherit;font-size:13px;font-weight:700;border:1.5px solid var(--mint);background:#fff;color:var(--mint-d);border-radius:9px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+  .copybtn:hover{background:var(--mint-bg)}
+  .tmuted{color:var(--ink-soft);font-size:14px;padding:6px}
   .passbar{max-width:640px;margin:0 auto 12px;text-align:center;font-weight:800;font-size:18px;padding:13px;border-radius:14px}
   .passbar.ok{background:#e6f7ee;color:#0a7d4f}
   .passbar.no{background:#fdeaea;color:#c0392b}
@@ -398,27 +413,51 @@ function scTeacher(skipPin){
 
   const today=todayStr();
   const y=new Date(Date.now()-86400000); const yest=todayStr(y);
-  const fmtRec=list=>list.length? list.map(r=>`<div class="trow"><span>${r.name||'학생'} · ${r.school||''}</span><span>${r.title} · ${r.score}/${r.total}</span></div>`).join('') : '<div class="trow" style="color:var(--ink-soft)">기록 없음</div>';
+  const esc=escR;
+  function groupStu(list){ const m={}; list.forEach(r=>{ const k=r.name||'학생'; (m[k]=m[k]||[]).push(r); });
+    return Object.keys(m).sort((a,b)=>String(a).localeCompare(String(b),'ko')).map(name=>({name, school:(m[name][0]||{}).school||'', recs:m[name]})); }
+  function badge(p){ return (p>=90)?'<span class="passb">통과</span>':'<span class="retest">재시험</span>'; }
+  function renderDay(group, pfx){
+    if(!group.length) return '<div class="tmuted">기록 없음</div>';
+    return group.map((stu,i)=>{
+      const rows=stu.recs.map((r,j)=>{
+        const det=(r.wrong&&r.wrong.length)? r.wrong.map(w=>`<div class="wsent">• ${esc(w)}</div>`).join('') : '<div class="tmuted">틀린 것 없음 (만점)</div>';
+        return `<div class="trecrow"><div class="trecrow-head" onclick="window.__tRec('${pfx}${i}_${j}')"><span>${esc(r.title)}</span><span>${r.score}/${r.total} (${r.pct}%)${badge(r.pct)}</span></div><div class="trec-detail" id="rd-${pfx}${i}_${j}" style="display:none">${det}</div></div>`;
+      }).join('');
+      const retests=stu.recs.filter(r=>r.pct<90).length;
+      const summary=`${stu.recs.length}개${retests?` · <span style="color:var(--bad);font-weight:800">재시험 ${retests}</span>`:''}`;
+      return `<div class="tstudent">
+        <div class="tstu-head" onclick="window.__tStu('${pfx}${i}')">
+          <div><b>${esc(stu.name)}</b> <span class="tmuted" style="padding:0">${esc(stu.school)}</span></div>
+          <div style="display:flex;align-items:center;gap:10px">${summary} <button class="copybtn" onclick="event.stopPropagation();window.__tCopy('${pfx}',${i})">카톡</button></div>
+        </div>
+        <div class="tstu-body" id="stub-${pfx}${i}" style="display:none">${rows}</div>
+      </div>`;
+    }).join('');
+  }
   const fmtPend=list=>list.length? list.map(m=>`<div class="trow"><span>${m.name} <span style="color:var(--ink-soft)">(${m.id})</span></span><button class="btn primary" style="padding:6px 14px;font-size:14px" onclick="approveMember('${String(m.id).replace(/'/g,"")}')">승인</button></div>`).join('') : '<div class="trow" style="color:var(--ink-soft)">승인 대기 중인 학생 없음</div>';
 
   const draw=(recs,members,src)=>{
     const pend=(members||[]).filter(m=>m.status!=='승인');
-    show(`<h1>선생님 확인</h1><p class="sub">${src}</p>
+    const tG=groupStu(recs.filter(r=>normDate(r.date)===today));
+    const yG=groupStu(recs.filter(r=>normDate(r.date)===yest));
+    window.__tGroups={t:tG,y:yG}; window.__tDates={t:today,y:yest};
+    show(`<h1>선생님 확인</h1><p class="sub">${src} · 이름을 누르면 펼쳐져요</p>
     <div class="qcard" style="max-width:760px;margin:0 auto;border:2px solid var(--mint)"><div style="font-weight:800;margin-bottom:8px">🆕 승인 대기 학생 (${pend.length})</div>${fmtPend(pend)}</div>
-    <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:8px">오늘 기록 (${today})</div>${fmtRec(recs.filter(r=>normDate(r.date)===today))}</div>
-    <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:8px">어제 기록 (${yest})</div>${fmtRec(recs.filter(r=>normDate(r.date)===yest))}</div>
-    <div class="bar"><button class="btn ghost" onclick="go(scLogin)">← 로그인으로</button><button class="btn ghost" onclick="window.__tkakao()">오늘 기록 카톡 복사</button><button class="btn primary" onclick="scTeacher(true)">새로고침</button></div>`);
+    <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:10px">오늘 (${today})</div>${renderDay(tG,'t')}</div>
+    <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:10px">어제 (${yest})</div>${renderDay(yG,'y')}</div>
+    <div class="bar"><button class="btn ghost" onclick="go(scLogin)">← 로그인으로</button><button class="btn primary" onclick="scTeacher(true)">새로고침</button></div>`);
     backBtn.style.display='none';
-    window.__tkakao=()=>{
-      const list=recs.filter(r=>normDate(r.date)===today);
-      if(!list.length){ alert('오늘 기록이 없어요.'); return; }
-      const txt='[헤일리 중등부] '+today+' 기록\n\n'+list.map(r=>{
-        let s=`${r.name||'학생'} · ${r.title} ${r.score}/${r.total}(${r.pct}%)`;
-        if(r.wrong&&r.wrong.length){ s+='\n  [틀린 것]\n'+r.wrong.map(w=>'  • '+w).join('\n'); }
-        return s;
-      }).join('\n\n');
-      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(()=>alert('복사됐어요! 카톡에 붙여넣어 보내세요.')); }
-      else prompt('아래 내용을 복사해서 카톡으로 보내세요', txt);
+    window.__tStu=(id)=>{ const e=document.getElementById('stub-'+id); if(e) e.style.display = (e.style.display==='none'?'block':'none'); };
+    window.__tRec=(id)=>{ const e=document.getElementById('rd-'+id); if(e) e.style.display = (e.style.display==='none'?'block':'none'); };
+    window.__tCopy=(pfx,i)=>{
+      const stu=(window.__tGroups[pfx]||[])[i]; if(!stu) return;
+      const dl=window.__tDates[pfx];
+      let txt=`[헤일리 중등부] ${dl} · ${stu.name}\n`;
+      stu.recs.forEach(r=>{ txt+=`\n${r.title} ${r.score}/${r.total}(${r.pct}%)${r.pct<90?' [재시험]':''}`;
+        if(r.wrong&&r.wrong.length){ txt+='\n'+r.wrong.map(w=>'  • '+w).join('\n'); } });
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(()=>alert(stu.name+' 학습 복사됐어요! 카톡에 붙여넣으세요.')); }
+      else prompt('복사해서 카톡으로 보내세요', txt);
     };
   };
 
