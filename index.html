@@ -656,7 +656,8 @@ function scCloze(subset){
       // 현재 빈칸 선지
       if(!answered){
         const b=bl[cur]; const opts=makeOpts(b.blank, allAns.concat(['made','found','small','open']));
-        document.getElementById('opts').innerHTML=opts.map((o,i)=>`<div class="clozeopt" onclick="window.__put('${escR(o)}')">${CIRC[i]} ${escR(o)}</div>`).join('');
+        window.__czOpts=opts;
+        document.getElementById('opts').innerHTML=opts.map((o,i)=>`<div class="clozeopt" onclick="window.__put(${i})">${CIRC[i]} ${escR(o)}</div>`).join('');
         document.getElementById('cnt').textContent=`빈칸 ${fill.filter(x=>x!==null).length}/${bl.length}`;
       } else { document.getElementById('opts').innerHTML=''; }
       document.getElementById('chk').disabled = answered || fill.some(x=>x===null);
@@ -668,7 +669,7 @@ function scCloze(subset){
       <button class="btn primary" id="chk" onclick="window.__check()" disabled>${idx<items.length-1?'다음 →':'결과'}</button></div>`);
     startTimer(TIMER.blankMC*bl.length||TIMER.blankMC,()=>window.__check(true));
     window.__sel=(k)=>{ if(answered)return; cur=k; paint(); };       // 빈칸 직접 골라 수정
-    window.__put=(v)=>{ if(answered)return; fill[cur]=v;
+    window.__put=(i)=>{ if(answered)return; const v=(window.__czOpts||[])[i]; if(v===undefined)return; fill[cur]=v;
       // 다음 빈 칸으로 자동 이동
       const nx=fill.findIndex(x=>x===null); cur = nx>=0?nx:cur; paint(); };
     window.__reset=()=>{ if(answered)return; fill=Array(bl.length).fill(null); cur=0; paint(); };
@@ -973,4 +974,3 @@ nav=[scLogin]; scLogin();
 </script>
 </body>
 </html>
-
