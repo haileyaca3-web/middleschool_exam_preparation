@@ -343,6 +343,8 @@ function saveRec(rec){
   syncRec(rec); // 시트에도 전송 (SHEET_API 있을 때만)
 }
 function todayStr(d){ const x=d?new Date(d):new Date(); return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`; }
+/* 시트가 주는 날짜가 "2026-06-11"이든 "Thu Jun 11 2026..."이든 yyyy-MM-dd로 통일 */
+function normDate(d){ if(!d) return ''; const s=String(d); if(/^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0,10); const x=new Date(s); return isNaN(x)?s:todayStr(x); }
 
 /* 시트로 기록 전송 — 보내고 잊기(fire-and-forget). 실패해도 앱은 그대로 작동 */
 function syncRec(rec){
@@ -403,12 +405,12 @@ function scTeacher(skipPin){
     const pend=(members||[]).filter(m=>m.status!=='승인');
     show(`<h1>선생님 확인</h1><p class="sub">${src}</p>
     <div class="qcard" style="max-width:760px;margin:0 auto;border:2px solid var(--mint)"><div style="font-weight:800;margin-bottom:8px">🆕 승인 대기 학생 (${pend.length})</div>${fmtPend(pend)}</div>
-    <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:8px">오늘 기록 (${today})</div>${fmtRec(recs.filter(r=>r.date===today))}</div>
-    <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:8px">어제 기록 (${yest})</div>${fmtRec(recs.filter(r=>r.date===yest))}</div>
+    <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:8px">오늘 기록 (${today})</div>${fmtRec(recs.filter(r=>normDate(r.date)===today))}</div>
+    <div class="qcard" style="max-width:760px;margin:14px auto 0"><div style="font-weight:800;margin-bottom:8px">어제 기록 (${yest})</div>${fmtRec(recs.filter(r=>normDate(r.date)===yest))}</div>
     <div class="bar"><button class="btn ghost" onclick="go(scLogin)">← 로그인으로</button><button class="btn ghost" onclick="window.__tkakao()">오늘 기록 카톡 복사</button><button class="btn primary" onclick="scTeacher(true)">새로고침</button></div>`);
     backBtn.style.display='none';
     window.__tkakao=()=>{
-      const list=recs.filter(r=>r.date===today);
+      const list=recs.filter(r=>normDate(r.date)===today);
       if(!list.length){ alert('오늘 기록이 없어요.'); return; }
       const txt='[헤일리 중등부] '+today+' 기록\n\n'+list.map(r=>{
         let s=`${r.name||'학생'} · ${r.title} ${r.score}/${r.total}(${r.pct}%)`;
@@ -901,4 +903,3 @@ nav=[scLogin]; scLogin();
 </script>
 </body>
 </html>
-
