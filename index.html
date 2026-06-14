@@ -141,7 +141,12 @@
   /* 동사형 인라인 입력 */
   .inlinebox{display:inline-flex;align-items:center;gap:5px;margin:0 3px}
   .given{font-size:13px;color:var(--ink-soft);font-weight:700}
+  .bnum{font-size:12px;font-weight:800;color:var(--mint-d);background:var(--mint-soft);border-radius:6px;padding:1px 7px;margin-right:3px}
   .winline{width:120px;border:1.5px solid var(--line);border-radius:9px;padding:7px 10px;font-family:inherit;font-size:16px}
+  .wbline{min-width:130px;width:auto}
+  .pickrow{display:flex;align-items:center;gap:12px;padding:13px 6px;border-bottom:1px solid var(--line);font-size:16px;cursor:pointer}
+  .pickrow:last-child{border-bottom:none}
+  .pickrow input{width:20px;height:20px;accent-color:var(--mint);flex-shrink:0}
   .winline:focus{outline:none;border-color:var(--mint)}
   /* 배열 */
   .arr-pool{display:grid;gap:11px}
@@ -242,6 +247,15 @@ const DIALOGS = {
 /* ===== 외부 데이터 로더 (레슨별 JSON을 data/ 에서 fetch) ===== */
 let READING_DATA = null;
 let GRAMMAR_DATA = null;
+let DIALOG_DATA = null;
+let ACTIVE_DATA = null;   // 현재 풀고 있는 데이터셋(본문 or 대화문)
+let ACTIVE_PASS = null;   // 선택한 지문 id 배열 (null=전체)
+function curSet(sec){
+  const src = ACTIVE_DATA || READING_DATA;
+  let items = (src && src[sec]) || [];
+  if(ACTIVE_PASS && ACTIVE_PASS.length) items = items.filter(it=>ACTIVE_PASS.includes(it.passage));
+  return items;
+}
 const _dataCache = {};
 async function loadData(path){
   if(_dataCache[path]) return _dataCache[path];
@@ -535,6 +549,10 @@ async function pickLesson(id){
     show('<h1>자료를 불러오지 못했어요</h1><p class="sub">'+e.message+'</p><button class="bigcard" onclick="go(scLesson)">뒤로</button>');
     return;
   }
+  // 대화문은 있으면 불러오고, 없으면 조용히 넘어감(선택)
+  DIALOG_DATA = null;
+  try{ DIALOG_DATA = await loadData('data/'+id+'.dialog.json'); }catch(e){ DIALOG_DATA = null; }
+  ACTIVE_DATA = READING_DATA; ACTIVE_PASS = null;
   go(scHub);
 }
 
@@ -542,11 +560,12 @@ async function pickLesson(id){
 function scHub(){
   const hasWB = ST.lesson ? ST.lesson.hasWorkbook : true;
   const hasGR = ST.lesson ? ST.lesson.hasGrammar : true;
+  const wrap=(fn)=> DIALOG_DATA ? (()=>scSource(fn)) : fn;
   const items=[
     ['1차시','단어','단어 뜻 · 해석',scWordMenu],
-    ['2차시','문장','영어 빈칸 · 어법 선택',scSentSrc],
-    ['3차시','순서 배열','문장 순서 맞추기',scOrder],
-    ['4차시','영작','동사형 연습 · 영작',scWriteHub],
+    ['2차시','문장','영어 빈칸 · 어법 선택',wrap(scSentSrc)],
+    ['3차시','순서 배열','문장 순서 맞추기',wrap(scOrder)],
+    ['4차시','영작','빈칸에 영어 쓰기',wrap(scWriteHub)],
   ];
   window.__hub=items.map(it=>it[3]);
   window.__soon=()=>alert('이 교재는 아직 문법 시험만 준비돼 있어요. 단어·본문 자료가 들어오면 열려요.');
@@ -626,6 +645,36 @@ function scWordQuiz(mode, subset){
 function escR(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function norm(x){return (x||'').toLowerCase().replace(/[".,!?']/g,'').replace(/\s+/g,' ').trim();}
 function normWord(x){return (x||'').toLowerCase().replace(/\.{2,}|…|[~()\[\]{}\/.,!?"';:]/g,' ').replace(/\s+/g,' ').trim();}
+/* 본문/대화문 선택 → 대화문이면 지문 고르기 → next 실행 */
+function scSource(next){
+  if(!DIALOG_DATA){ ACTIVE_DATA=READING_DATA; ACTIVE_PASS=null; next(); return; }
+  show(`<h1>본문 / 대화문</h1><p class="sub">무엇으로 풀까요?</p>
+    <div class="bigcards c2">
+      <button class="bigcard" onclick="window.__src('reading')"><div class="nm">본문</div><div class="ds">교과서 본문 전체</div></button>
+      <button class="bigcard" onclick="window.__src('dialog')"><div class="nm">대화문</div><div class="ds">지문을 골라서</div></button>
+    </div>`);
+  window.__src=(which)=>{
+    if(which==='reading'){ ACTIVE_DATA=READING_DATA; ACTIVE_PASS=null; go(next); }
+    else { go(()=>scPassPick(next)); }
+  };
+}
+function scPassPick(next){
+  const ps=(DIALOG_DATA&&DIALOG_DATA.passages)||[];
+  if(!ps.length){ ACTIVE_DATA=DIALOG_DATA; ACTIVE_PASS=null; go(next); return; }
+  show(`<h1>대화문 지문 선택</h1><p class="sub">시험 볼 지문을 골라요 (여러 개 가능)</p>
+    <div class="qcard" style="max-width:760px;margin:0 auto">
+      ${ps.map(p=>`<label class="pickrow"><input type="checkbox" class="passck" value="${escR(p.id)}" checked><span>${escR(p.label)}</span></label>`).join('')}
+    </div>
+    <div class="bar"><button class="btn ghost" onclick="window.__passAll()">전체 선택/해제</button>
+    <button class="btn primary" onclick="window.__passGo()">시작</button></div>`);
+  backBtn.style.display='block';
+  window.__passAll=()=>{ const cks=[...document.querySelectorAll('.passck')]; const allon=cks.every(c=>c.checked); cks.forEach(c=>c.checked=!allon); };
+  window.__passGo=()=>{
+    const ids=[...document.querySelectorAll('.passck:checked')].map(c=>c.value);
+    if(!ids.length){ alert('지문을 하나 이상 선택하세요'); return; }
+    ACTIVE_DATA=DIALOG_DATA; ACTIVE_PASS=ids; go(next);
+  };
+}
 function scSentSrc(){
   show(`<h1>2차시 · 문장</h1><p class="sub">무엇을 풀까요?</p>
     <div class="bigcards c2">
@@ -635,8 +684,8 @@ function scSentSrc(){
 }
 /* 영어 빈칸 — 본문 전체(cloze). 빈칸 다 채우고 '다음' 누르면 한번에 채점. 문장당 (빈칸수*15초) */
 function scCloze(subset){
-  const items = subset&&subset.length ? subset : READING_DATA.cloze;
-  const allAns = READING_DATA.cloze.flatMap(c=>c.tokens.filter(t=>t.blank!==undefined).map(t=>t.blank));
+  const items = subset&&subset.length ? subset : curSet('cloze');
+  const allAns = curSet('cloze').flatMap(c=>c.tokens.filter(t=>t.blank!==undefined).map(t=>t.blank));
   let idx=0,score=0,total=0,wrong=[],wrongItems=[];
   function blanksOf(c){return c.tokens.map((t,i)=>({...t,i})).filter(t=>t.blank!==undefined);}
   function render(){
@@ -698,7 +747,7 @@ function scCloze(subset){
 }
 /* 어법 선택 — 본문 전체(choice). 문장 속 둘 중 탭 */
 function scChoice(subset){
-  const items = subset&&subset.length ? subset : READING_DATA.choice; let idx=0,score=0,wrong=[],wrongItems=[];
+  const items = subset&&subset.length ? subset : curSet('choice'); let idx=0,score=0,wrong=[],wrongItems=[];
   function render(){
     const c=items[idx];
     const html=c.tokens.map((t,ti)=>{ if(!t.opts) return escR(t.t);
@@ -735,7 +784,7 @@ function scChoice(subset){
 
 /* ---------- 3차시: 순서 배열 — 이미지처럼 단어/구 클릭 배열 (본문 통째) ---------- */
 function scOrder(subset){
-  const items = subset&&subset.length ? subset : READING_DATA.order; let idx=0,score=0,wrong=[],wrongItems=[];
+  const items = subset&&subset.length ? subset : curSet('order'); let idx=0,score=0,wrong=[],wrongItems=[];
   function render(){
     const q=items[idx];
     const shuffled=q.chunks.map((c,i)=>({c,i})).sort(()=>Math.random()-.5);
@@ -785,12 +834,12 @@ function scWriteHub(){
   show(`<h1>4차시 · 영작</h1><p class="sub">동사형으로 감 잡고 영작으로 가요</p>
     <div class="bigcards c2">
       <button class="bigcard" onclick="go(scVerb)"><div class="nm">동사형 연습</div><div class="ds">동사를 알맞은 형태로</div></button>
-      <button class="bigcard" onclick="go(scWrite)"><div class="nm">영작</div><div class="ds">한국어 보고 영어 쓰기</div></button>
+      <button class="bigcard" onclick="go(scWrite)"><div class="nm">영작</div><div class="ds">빈칸에 알맞은 영어 쓰기</div></button>
     </div>`);
 }
 /* 동사형 — given(원형)마다 입력칸. 동사 2개면 칸 2개 */
 function scVerb(subset){
-  const items = subset&&subset.length ? subset : READING_DATA.verbform; let idx=0,score=0,wrong=[],wrongItems=[];
+  const items = subset&&subset.length ? subset : curSet('verbform'); let idx=0,score=0,wrong=[],wrongItems=[];
   function render(){
     const v=items[idx]; let bi=0;
     const html=v.tokens.map(t=>{ if(t.given===undefined) return escR(t.t);
@@ -821,28 +870,41 @@ function scVerb(subset){
 }
 /* 영작 — 대소문자·온점·따옴표·띄어쓰기 무시하고 채점 */
 function scWrite(subset){
-  const items = subset&&subset.length ? subset : READING_DATA.writing; let idx=0,score=0,wrong=[],wrongItems=[];
+  const items = subset&&subset.length ? subset : curSet('writeblank');
+  let idx=0,score=0,total=0,wrong=[],wrongItems=[];
   function render(){
     const w=items[idx];
-    show(`<div class="qwrap"><div class="qhead"><span class="qtag">4차시 · 영작</span><span class="qnum">${idx+1} / ${items.length}</span></div>
+    const bl=w.tokens.map((t,i)=>({...t,i})).filter(t=>t.blank!==undefined);
+    let n=0;
+    const bodyHtml=w.tokens.map(t=>{
+      if(t.blank===undefined) return escR(t.t);
+      n++; return `<span class="inlinebox"><span class="bnum">${CIRC[n-1]||n}</span><input class="winline wbline" id="wb${n}" autocomplete="off" autocapitalize="off" placeholder="영어"></span>`;
+    }).join('');
+    show(`<div class="qwrap"><div class="qhead"><span class="qtag">4차시 · 영작 (빈칸)</span><span class="qnum">${idx+1} / ${items.length}</span></div>
       <div class="qcard"><div class="prompt">${escR(w.ko)}</div>
-      <div class="sub" style="margin:0 0 6px">주어진 단어: <b>${(w.words||[]).map(escR).join(', ')}</b>${w.prefix?` · 시작: ${escR(w.prefix)}`:''}</div>
-      <input class="winput" id="wi" placeholder="영어로 작성"><div class="fb" id="fb"></div></div></div>
+      <div class="stem" style="line-height:2.8">${bodyHtml}</div><div class="fb" id="fb"></div></div></div>
       <div class="bar"><button class="btn primary" id="chk" onclick="window.__check()">${idx<items.length-1?'다음 →':'결과'}</button></div>`);
-    document.getElementById('wi').focus();
+    const first=document.querySelector('.winline'); if(first) first.focus();
     startTimer(TIMER.writeS,()=>window.__check(true));
     let answered=false;
-    window.__check=(t=false)=>{if(answered)return;answered=true;stopTimer();
-      const typed=(document.getElementById('wi').value||'').trim();
-      const ok=norm(typed)===norm(w.answer); if(ok)score++; else { wrong.push(`${w.ko}\n   내 답: ${typed||'무응답'}\n   정답: ${w.answer}`); wrongItems.push(w); }
-      const fb=document.getElementById('fb');fb.className='fb on '+(ok?'good':'bad');
-      fb.innerHTML=(ok?'정답!':(t?'시간 초과 · 오답':'오답입니다'))+`<br><span style="font-weight:500">정답: ${escR(w.answer)}</span>`;
-      const b=document.getElementById('chk');b.disabled=true;
-      setTimeout(()=>{idx++;idx<items.length?render():scResult('4차시 영작',score,items.length,wrong,
-        {restart:()=>scWrite(), retry: wrongItems.length?()=>scWrite(wrongItems.slice()):null});}, FEEDBACK_MS);
+    window.__check=(t=false)=>{ if(answered)return; answered=true; stopTimer();
+      const ins=[...document.querySelectorAll('.winline')];
+      let allok=true; const wrongParts=[];
+      ins.forEach((inp,k)=>{ const ans=bl[k].blank; const val=(inp.value||'').trim();
+        const ok=normWord(val)===normWord(ans);
+        inp.style.borderColor= ok?'var(--mint)':'var(--bad)';
+        total++; if(ok) score++; else { allok=false; wrongParts.push(`${val||'무응답'}→${ans}`); }
+      });
+      const full=w.tokens.map(x=>x.blank!==undefined?x.blank:x.t).join('');
+      if(!allok){ wrong.push(full+'\n   내 답→정답: '+wrongParts.join(', ')); wrongItems.push(w); }
+      const fb=document.getElementById('fb'); fb.className='fb on '+(allok?'good':'bad');
+      fb.innerHTML = allok ? '정답!' : (t?'시간 초과 · ':'오답 · ')+'정답: '+escR(bl.map(b=>b.blank).join(' / '));
+      document.getElementById('chk').disabled=true;
+      setTimeout(()=>{ idx++; idx<items.length?render():scResult('4차시 영작',score,total,wrong,
+        {restart:()=>scWrite(), retry: wrongItems.length?()=>scWrite(wrongItems.slice()):null}); }, FEEDBACK_MS);
     };
   }
-  if(!items.length){scResult('4차시 영작',0,0);return;} render();
+  if(!items.length){ scResult('4차시 영작',0,0); return; } render();
 }
 
 /* ---------- 4차시: 문법 시험 (완료 시 5차시 잠금 해제) ---------- */
