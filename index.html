@@ -923,7 +923,8 @@ function scGrammar(){ // 패턴 선택
 function gQText(q){ // 문제만 (정답 표시 없이) — 오답노트용
   const strip=s=>String(s||'').replace(/\[\[|\]\]/g,'').replace(/\n/g,' ').trim();
   const ch=q.choices.map((c,i)=>`${CIRC[i]||(i+1)} ${strip(c)}`).join('  ');
-  return strip(q.prompt)+(q.passage&&q.passage.trim()?('\n'+strip(q.passage)):'')+'\n'+ch;
+  const num = (q.no!=null && q.no!=='') ? q.no+'번. ' : '';
+  return num+strip(q.prompt)+(q.passage&&q.passage.trim()?('\n'+strip(q.passage)):'')+'\n'+ch;
 }
 function scGrammarQuiz(patId, subset){
   const list = subset&&subset.length ? subset : GRAMMAR_DATA.questions.filter(q=>q.pattern===patId);
@@ -1038,4 +1039,3 @@ nav=[scLogin]; scLogin();
 </script>
 </body>
 </html>
-
