@@ -1,0 +1,959 @@
+{
+  "meta": {
+    "school": "헤일리올라",
+    "grade": "중3",
+    "textbook": "미래엔(최연희)",
+    "lesson": "Lesson 5",
+    "title": "문법 시험",
+    "patterns": [
+      {
+        "id": "p1",
+        "name": "본문 다시 쓰기 Step 1",
+        "count": 26
+      },
+      {
+        "id": "p2",
+        "name": "본문 다시 쓰기 Step 4",
+        "count": 26
+      }
+    ]
+  },
+  "questions": [
+    {
+      "pattern": "p1",
+      "no": 1,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Do you __________ you have a unique problem? Chances __________ __________ many other people have the same problem.",
+      "choices": [
+        "are / that / think",
+        "think / are / that",
+        "are / think / that",
+        "that / are / think",
+        "that / are / thinks"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'think / are / that'이다. 완성 문장은 'Do you think you have a unique problem? Chances are that many other people have the same problem.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 2,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Psychology __________ the study of the human mind and behavior, so it can __________ you __________ a solution to your problem.",
+      "choices": [
+        "are / help / find",
+        "find / help / are",
+        "is / help / find",
+        "find / help / is",
+        "find / helps / is"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'is / help / find'이다. 완성 문장은 'Psychology is the study of the human mind and behavior, so it can help you find a solution to your problem.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 3,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "__________ was five minutes __________ Jisu's big presentation in front of the __________ class.",
+      "choices": [
+        "It / before / wholes",
+        "It / befores / whole",
+        "It / whole / before",
+        "It / before / whole",
+        "Its / before / whole"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'It / before / whole'이다. 완성 문장은 'It was five minutes before Jisu's big presentation in front of the whole class.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 4,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "__________ nervous, Jisu __________ carefully __________ her notes in her chair.",
+      "choices": [
+        "Feeling / studying / was",
+        "Feeling / was / studyings",
+        "Feeling / were / studying",
+        "Feelings / was / studying",
+        "Feeling / was / studying"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'Feeling / was / studying'이다. 완성 문장은 'Feeling nervous, Jisu was carefully studying her notes in her chair.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 5,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Then, her teacher __________ over and __________ her __________ __________ tall like Wonder Woman.",
+      "choices": [
+        "came / told / to / stand",
+        "came / stand / to / told",
+        "came / stand / told / to",
+        "came / to / stand / told",
+        "came / to / told / stand"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'came / told / to / stand'이다. 완성 문장은 'Then, her teacher came over and told her to stand tall like Wonder Woman.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 6,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "__________ __________ tall for a few minutes, Jisu did not __________ nervous anymore.",
+      "choices": [
+        "After / feel / standing",
+        "After / standing / feel",
+        "After / standing / feels",
+        "After / standings / feel",
+        "Afters / standing / feel"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'After / standing / feel'이다. 완성 문장은 'After standing tall for a few minutes, Jisu did not feel nervous anymore.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 7,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "In fact, she __________ __________ __________ she would make a great presentation.",
+      "choices": [
+        "confident / that / was",
+        "confident / was / that",
+        "was / confident / that",
+        "that / confident / was",
+        "that / confident / were"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'was / confident / that'이다. 완성 문장은 'In fact, she was confident that she would make a great presentation.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 8,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "According to Amy Cuddy, a famous psychologist, we can __________ more confident just __________ __________ tall for two minutes before stressful events.",
+      "choices": [
+        "become / by / standings",
+        "become / bys / standing",
+        "become / standing / by",
+        "become / by / standing",
+        "becomes / by / standing"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'become / by / standing'이다. 완성 문장은 'According to Amy Cuddy, a famous psychologist, we can become more confident just by standing tall for two minutes before stressful events.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 9,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Our bodies change our __________, and our minds can change our __________.",
+      "choices": [
+        "behavior / mind",
+        "behavior / minds",
+        "behaviors / minds",
+        "mind / behavior",
+        "minds / behavior"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'minds / behavior'이다. 완성 문장은 'Our bodies change our minds, and our minds can change our behavior.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 10,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Do you want to __________ confident? __________ with your feet apart, and __________ your hands on your hips.",
+      "choices": [
+        "feel / Stand / place",
+        "Stand / feel / place",
+        "Stand / place / feel",
+        "feel / Stand / places",
+        "feel / Stands / place"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'feel / Stand / place'이다. 완성 문장은 'Do you want to feel confident? Stand with your feet apart, and place your hands on your hips.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 11,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "You __________ not only __________ sure about yourself but also __________ confident to other people.",
+      "choices": [
+        "feel / look / will",
+        "will / feel / look",
+        "feel / will / look",
+        "look / feel / will",
+        "look / feel / wills"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'will / feel / look'이다. 완성 문장은 'You will not only feel sure about yourself but also look confident to other people.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 12,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "When he __________ from high school next year, Taeho wants to __________ a professional farmer. However, he __________ never __________ anyone about it.",
+      "choices": [
+        "become / graduates / has / told",
+        "become / graduates / told / has",
+        "graduates / become / has / told",
+        "become / has / graduates / told",
+        "become / has / told / graduates"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'graduates / become / has / told'이다. 완성 문장은 'When he graduates from high school next year, Taeho wants to become a professional farmer. However, he has never told anyone about it.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 13,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He __________ __________ __________ his parents or his friends will not understand.",
+      "choices": [
+        "are / worried / that",
+        "is / that / worried",
+        "is / worried / thats",
+        "is / worried / that",
+        "is / worrieds / that"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'is / worried / that'이다. 완성 문장은 'He is worried that his parents or his friends will not understand.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 14,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "__________ __________ clear his mind, Taeho decided to __________ a day trip on a train by himself.",
+      "choices": [
+        "Wanting / take / to",
+        "Wanting / to / takes",
+        "Wanting / tos / take",
+        "Wantings / to / take",
+        "Wanting / to / take"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'Wanting / to / take'이다. 완성 문장은 'Wanting to clear his mind, Taeho decided to take a day trip on a train by himself.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 15,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "On the train, he __________ a complete stranger __________ __________ him about his problem.",
+      "choices": [
+        "told / sitting / beside",
+        "beside / sitting / told",
+        "beside / sitting / tolds",
+        "beside / sittings / told",
+        "beside / told / sitting"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'told / sitting / beside'이다. 완성 문장은 'On the train, he told a complete stranger sitting beside him about his problem.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 16,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He __________ no idea why he did it. However, he __________ much better when he __________ __________ the train.",
+      "choices": [
+        "felt / got / had / off",
+        "had / felt / got / off",
+        "felt / got / off / had",
+        "felt / had / got / off",
+        "felt / had / off / got"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'had / felt / got / off'이다. 완성 문장은 'He had no idea why he did it. However, he felt much better when he got off the train.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 17,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Strangely enough, we __________ __________ strangers about our problems __________ like Taeho.",
+      "choices": [
+        "just / often / tell",
+        "just / tell / often",
+        "often / tell / just",
+        "just / tell / oftens",
+        "just / tells / often"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'often / tell / just'이다. 완성 문장은 'Strangely enough, we often tell strangers about our problems just like Taeho.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 18,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "That is because we do not have to worry about __________ __________ or __________ them again.",
+      "choices": [
+        "being / judged / seeings",
+        "being / judgeds / seeing",
+        "being / seeing / judged",
+        "being / judged / seeing",
+        "beings / judged / seeing"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'being / judged / seeing'이다. 완성 문장은 'That is because we do not have to worry about being judged or seeing them again.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 19,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "If you have a problem that you cannot __________ with your family or friends, try __________ to a stranger. You will __________ much better.",
+      "choices": [
+        "feel / share / talking",
+        "feel / talking / share",
+        "feel / talking / shares",
+        "feel / talkings / share",
+        "share / talking / feel"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'share / talking / feel'이다. 완성 문장은 'If you have a problem that you cannot share with your family or friends, try talking to a stranger. You will feel much better.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 20,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Benjamin Franklin once __________ a political rival who __________ __________ like him __________ __________.",
+      "choices": [
+        "had / did / not / at / all",
+        "all / at / did / had / not",
+        "all / at / did / not / had",
+        "all / at / had / did / not",
+        "all / at / had / not / did"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'had / did / not / at / all'이다. 완성 문장은 'Benjamin Franklin once had a political rival who did not like him at all.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 21,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Franklin wanted __________ __________ friends with him, so he __________ up with a plan.",
+      "choices": [
+        "become / came / to",
+        "to / become / came",
+        "become / to / came",
+        "came / become / to",
+        "came / become / tos"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'to / become / came'이다. 완성 문장은 'Franklin wanted to become friends with him, so he came up with a plan.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 22,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "His rival had a __________ book. Franklin asked his rival __________ __________ him the book for a few days.",
+      "choices": [
+        "lend / rare / to",
+        "lend / to / rare",
+        "rare / to / lend",
+        "lend / to / rares",
+        "lend / tos / rare"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'rare / to / lend'이다. 완성 문장은 'His rival had a rare book. Franklin asked his rival to lend him the book for a few days.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 23,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "When Franklin __________ the book, he __________ him deeply.",
+      "choices": [
+        "return / thanked",
+        "returned / thanks",
+        "thanked / return",
+        "returned / thanked",
+        "thanked / returned"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'returned / thanked'이다. 완성 문장은 'When Franklin returned the book, he thanked him deeply.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 24,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "__________ that day, his rival __________ not only a political supporter but __________ a good friend.",
+      "choices": [
+        "Since / also / became",
+        "Since / became / alsos",
+        "Since / becames / also",
+        "Sinces / became / also",
+        "Since / became / also"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'Since / became / also'이다. 완성 문장은 'Since that day, his rival became not only a political supporter but also a good friend.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 25,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Franklin __________ said, \"Enemies who __________ you one favor __________ __________ to do more.\"",
+      "choices": [
+        "famously / do / will / want",
+        "do / famously / want / will",
+        "do / famously / will / want",
+        "do / want / famously / will",
+        "do / want / will / famously"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'famously / do / will / want'이다. 완성 문장은 'Franklin famously said, \"Enemies who do you one favor will want to do more.\"'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 26,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "If you __________ to turn a rival into a friend, __________ __________ your rival a favor. Instead, __________ your rival to do you a favor.",
+      "choices": [
+        "ask / do / don't / want",
+        "want / don't / do / ask",
+        "ask / do / don't / wants",
+        "ask / do / don'ts / want",
+        "ask / do / want / don't"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'want / don't / do / ask'이다. 완성 문장은 'If you want to turn a rival into a friend, don't do your rival a favor. Instead, ask your rival to do you a favor.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 1,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Do you think you have a unique problem? Chances are what many other people have the same problem.",
+        "Do you think you have the a unique problem? Chances are that many other people have the same problem.",
+        "Do think you you have a unique problem? Chances are that many other people have the same problem.",
+        "Do you think you have a unique problem? Chances are that many other people have the same problem.",
+        "Do you you think have a unique problem? Chances are that many other people have the same problem."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Do you think you have a unique problem? Chances are that many other people have the same problem.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 2,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Psychology are the study of the human mind and behavior, so it can help you find a solution to your problem.",
+        "Psychology is the study of the human mind and behavior, so it can help you find a solution to your problem.",
+        "Psychology is the study of the human mind and behavior, so it can help you find a solution for to your problem.",
+        "Psychology is the study of the human mind but and behavior, so it can help you find a solution to your problem.",
+        "Psychology is the study of the human mind and behavior, so it can help you find the a solution to your problem."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Psychology is the study of the human mind and behavior, so it can help you find a solution to your problem.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 3,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "It were five minutes before Jisu's big presentation in front of the whole class.",
+        "It five was minutes before Jisu's big presentation in front of the whole class.",
+        "It was minutes five before Jisu's big presentation in front of the whole class.",
+        "It was five before minutes Jisu's big presentation in front of the whole class.",
+        "It was five minutes before Jisu's big presentation in front of the whole class."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'It was five minutes before Jisu's big presentation in front of the whole class.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 4,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Feeling nervous, Jisu were carefully studying her notes in her chair.",
+        "Feeling Jisu nervous, was carefully studying her notes in her chair.",
+        "Feeling nervous, Jisu was carefully studying her notes in her chair.",
+        "Feeling nervous, was Jisu carefully studying her notes in her chair.",
+        "Feeling nervous, Jisu carefully was studying her notes in her chair."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Feeling nervous, Jisu was carefully studying her notes in her chair.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 5,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Then, her teacher came over and told her to stand tall like Wonder Woman.",
+        "Then, her teacher came over and told her for to stand tall like Wonder Woman.",
+        "Then, her teacher came over but and told her to stand tall like Wonder Woman.",
+        "Then, teacher her came over and told her to stand tall like Wonder Woman.",
+        "Then, her came teacher over and told her to stand tall like Wonder Woman."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Then, her teacher came over and told her to stand tall like Wonder Woman.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 6,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "After standing tall for the a few minutes, Jisu did not feel nervous anymore.",
+        "After standing tall for a few minutes, Jisu did no feel nervous anymore.",
+        "After tall standing for a few minutes, Jisu did not feel nervous anymore.",
+        "After standing tall for a few minutes, Jisu did not feel nervous anymore.",
+        "After standing for tall a few minutes, Jisu did not feel nervous anymore."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'After standing tall for a few minutes, Jisu did not feel nervous anymore.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 7,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "In fact, she were confident that she would make a great presentation.",
+        "In fact, she was confident that she would make a great presentation.",
+        "In fact, she was confident what she would make a great presentation.",
+        "In fact, she was confident that she would make the a great presentation.",
+        "In she fact, was confident that she would make a great presentation."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'In fact, she was confident that she would make a great presentation.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 8,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "According for to Amy Cuddy, a famous psychologist, we can become more confident just by standing tall for two minutes before stressful events.",
+        "According to Amy Cuddy, the a famous psychologist, we can become more confident just by standing tall for two minutes before stressful events.",
+        "According Amy to Cuddy, a famous psychologist, we can become more confident just by standing tall for two minutes before stressful events.",
+        "According to Cuddy, Amy a famous psychologist, we can become more confident just by standing tall for two minutes before stressful events.",
+        "According to Amy Cuddy, a famous psychologist, we can become more confident just by standing tall for two minutes before stressful events."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'According to Amy Cuddy, a famous psychologist, we can become more confident just by standing tall for two minutes before stressful events.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 9,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Our bodies change our minds, but and our minds can change our behavior.",
+        "Our change bodies our minds, and our minds can change our behavior.",
+        "Our bodies change our minds, and our minds can change our behavior.",
+        "Our bodies our change minds, and our minds can change our behavior.",
+        "Our bodies change minds, our and our minds can change our behavior."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Our bodies change our minds, and our minds can change our behavior.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 10,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Do you want to feel confident? Stand with your feet apart, and place your hands on your hips.",
+        "Do you want for to feel confident? Stand with your feet apart, and place your hands on your hips.",
+        "Do you want to feel confident? Stand with your feet apart, but and place your hands on your hips.",
+        "Do you want to feel confident? Stand by with your feet apart, and place your hands on your hips.",
+        "Do want you to feel confident? Stand with your feet apart, and place your hands on your hips."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Do you want to feel confident? Stand with your feet apart, and place your hands on your hips.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 11,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "You will not only feel sure about yourself but also look confident for to other people.",
+        "You will no only feel sure about yourself but also look confident to other people.",
+        "You not will only feel sure about yourself but also look confident to other people.",
+        "You will not only feel sure about yourself but also look confident to other people.",
+        "You will only not feel sure about yourself but also look confident to other people."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'You will not only feel sure about yourself but also look confident to other people.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 12,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "When he graduates from high school next year, Taeho wants for to become a professional farmer. However, he has never told anyone about it.",
+        "When he graduates from high school next year, Taeho wants to become a professional farmer. However, he has never told anyone about it.",
+        "When he graduates from high school next year, Taeho wants to become the a professional farmer. However, he has never told anyone about it.",
+        "When graduates he from high school next year, Taeho wants to become a professional farmer. However, he has never told anyone about it.",
+        "When he from graduates high school next year, Taeho wants to become a professional farmer. However, he has never told anyone about it."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'When he graduates from high school next year, Taeho wants to become a professional farmer. However, he has never told anyone about it.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 13,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He are worried that his parents or his friends will not understand.",
+        "He is worried what his parents or his friends will not understand.",
+        "He is worried that his parents or his friends will no understand.",
+        "He worried is that his parents or his friends will not understand.",
+        "He is worried that his parents or his friends will not understand."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He is worried that his parents or his friends will not understand.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 14,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Wanting for to clear his mind, Taeho decided to take a day trip on a train by himself.",
+        "Wanting to clear his mind, Taeho decided to take the a day trip on a train by himself.",
+        "Wanting to clear his mind, Taeho decided to take a day trip on a train by himself.",
+        "Wanting clear to his mind, Taeho decided to take a day trip on a train by himself.",
+        "Wanting to his clear mind, Taeho decided to take a day trip on a train by himself."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Wanting to clear his mind, Taeho decided to take a day trip on a train by himself.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 15,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "On the train, he told a complete stranger sitting beside him about his problem.",
+        "On the train, he told the a complete stranger sitting beside him about his problem.",
+        "On train, the he told a complete stranger sitting beside him about his problem.",
+        "On the he train, told a complete stranger sitting beside him about his problem.",
+        "On the train, told he a complete stranger sitting beside him about his problem."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'On the train, he told a complete stranger sitting beside him about his problem.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 16,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He no had idea why he did it. However, he felt much better when he got off the train.",
+        "He had idea no why he did it. However, he felt much better when he got off the train.",
+        "He had no why idea he did it. However, he felt much better when he got off the train.",
+        "He had no idea why he did it. However, he felt much better when he got off the train.",
+        "He had no idea he why did it. However, he felt much better when he got off the train."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He had no idea why he did it. However, he felt much better when he got off the train.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 17,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Strangely we enough, often tell strangers about our problems just like Taeho.",
+        "Strangely enough, we often tell strangers about our problems just like Taeho.",
+        "Strangely enough, often we tell strangers about our problems just like Taeho.",
+        "Strangely enough, we tell often strangers about our problems just like Taeho.",
+        "Strangely enough, we often strangers tell about our problems just like Taeho."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Strangely enough, we often tell strangers about our problems just like Taeho.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 18,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "That are because we do not have to worry about being judged or seeing them again.",
+        "That is because we do not have for to worry about being judged or seeing them again.",
+        "That is because we do no have to worry about being judged or seeing them again.",
+        "That because is we do not have to worry about being judged or seeing them again.",
+        "That is because we do not have to worry about being judged or seeing them again."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'That is because we do not have to worry about being judged or seeing them again.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 19,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "If you have a problem that you cannot share with your family or friends, try talking for to a stranger. You will feel much better.",
+        "If you have a problem what you cannot share with your family or friends, try talking to a stranger. You will feel much better.",
+        "If you have a problem that you cannot share with your family or friends, try talking to a stranger. You will feel much better.",
+        "If you have the a problem that you cannot share with your family or friends, try talking to a stranger. You will feel much better.",
+        "If you have a problem that you cannot share by with your family or friends, try talking to a stranger. You will feel much better."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'If you have a problem that you cannot share with your family or friends, try talking to a stranger. You will feel much better.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 20,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Benjamin Franklin once had a political rival who did not like him at all.",
+        "Benjamin Franklin once had the a political rival who did not like him at all.",
+        "Benjamin Franklin once had a political rival who did no like him at all.",
+        "Benjamin once Franklin had a political rival who did not like him at all.",
+        "Benjamin Franklin had once a political rival who did not like him at all."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Benjamin Franklin once had a political rival who did not like him at all.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 21,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Franklin wanted for to become friends with him, so he came up with a plan.",
+        "Franklin wanted to become friends with him, so he came up with the a plan.",
+        "Franklin wanted to become friends by with him, so he came up with a plan.",
+        "Franklin wanted to become friends with him, so he came up with a plan.",
+        "Franklin to wanted become friends with him, so he came up with a plan."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Franklin wanted to become friends with him, so he came up with a plan.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 22,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "His rival had a rare book. Franklin asked his rival for to lend him the book for a few days.",
+        "His rival had a rare book. Franklin asked his rival to lend him the book for a few days.",
+        "His rival had the a rare book. Franklin asked his rival to lend him the book for a few days.",
+        "His had rival a rare book. Franklin asked his rival to lend him the book for a few days.",
+        "His rival a had rare book. Franklin asked his rival to lend him the book for a few days."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'His rival had a rare book. Franklin asked his rival to lend him the book for a few days.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 23,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "When returned Franklin the book, he thanked him deeply.",
+        "When Franklin the returned book, he thanked him deeply.",
+        "When Franklin returned book, the he thanked him deeply.",
+        "When Franklin returned the he book, thanked him deeply.",
+        "When Franklin returned the book, he thanked him deeply."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'When Franklin returned the book, he thanked him deeply.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 24,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Since what day, his rival became not only a political supporter but also a good friend.",
+        "Since that day, his rival became not only the a political supporter but also a good friend.",
+        "Since that day, his rival became not only a political supporter but also a good friend.",
+        "Since that day, his rival became no only a political supporter but also a good friend.",
+        "Since day, that his rival became not only a political supporter but also a good friend."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Since that day, his rival became not only a political supporter but also a good friend.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 25,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Franklin famously said, \"Enemies who do you one favor will want to do more.\"",
+        "Franklin famously said, \"Enemies who do you one favor will want for to do more.\"",
+        "Franklin said, famously \"Enemies who do you one favor will want to do more.\"",
+        "Franklin famously \"Enemies said, who do you one favor will want to do more.\"",
+        "Franklin famously said, who \"Enemies do you one favor will want to do more.\""
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Franklin famously said, \"Enemies who do you one favor will want to do more.\"'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 26,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "If you want for to turn a rival into a friend, don't do your rival a favor. Instead, ask your rival to do you a favor.",
+        "If you want to turn the a rival into a friend, don't do your rival a favor. Instead, ask your rival to do you a favor.",
+        "If want you to turn a rival into a friend, don't do your rival a favor. Instead, ask your rival to do you a favor.",
+        "If you want to turn a rival into a friend, don't do your rival a favor. Instead, ask your rival to do you a favor.",
+        "If you to want turn a rival into a friend, don't do your rival a favor. Instead, ask your rival to do you a favor."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'If you want to turn a rival into a friend, don't do your rival a favor. Instead, ask your rival to do you a favor.'이다."
+    }
+  ]
+}

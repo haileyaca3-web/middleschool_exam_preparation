@@ -1,0 +1,887 @@
+{
+  "meta": {
+    "school": "헤일리올라",
+    "grade": "중3",
+    "textbook": "미래엔(최연희)",
+    "lesson": "Lesson 6",
+    "title": "문법 시험",
+    "patterns": [
+      {
+        "id": "p1",
+        "name": "본문 다시 쓰기 Step 1",
+        "count": 24
+      },
+      {
+        "id": "p2",
+        "name": "본문 다시 쓰기 Step 4",
+        "count": 24
+      }
+    ]
+  },
+  "questions": [
+    {
+      "pattern": "p1",
+      "no": 1,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Leonardo da Vinci __________ __________ __________ __________ __________ the greatest painters of all time.",
+      "choices": [
+        "are / known / as / one / of",
+        "is / known / as / one / of",
+        "as / is / known / of / one",
+        "as / is / known / one / of",
+        "as / is / of / known / one"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'is / known / as / one / of'이다. 완성 문장은 'Leonardo da Vinci is known as one of the greatest painters of all time.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 2,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He was also a __________ inventor, scientist, and musician. Very __________ people, __________, know that da Vinci was also a creative __________.",
+      "choices": [
+        "cook / few / great / however",
+        "cook / few / however / great",
+        "great / few / however / cook",
+        "cook / great / few / however",
+        "cook / great / however / few"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'great / few / however / cook'이다. 완성 문장은 'He was also a great inventor, scientist, and musician. Very few people, however, know that da Vinci was also a creative cook.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 3,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "In 1473, __________ da Vinci __________ as a __________ at a __________ in Florence, Italy.",
+      "choices": [
+        "cook / restaurant / twenty-year-old / worked",
+        "cook / restaurant / worked / twenty-year-old",
+        "cook / twenty-year-old / restaurant / worked",
+        "twenty-year-old / worked / cook / restaurant",
+        "cook / twenty-year-old / worked / restaurant"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'twenty-year-old / worked / cook / restaurant'이다. 완성 문장은 'In 1473, twenty-year-old da Vinci worked as a cook at a restaurant in Florence, Italy.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 4,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "When he __________ __________ of the __________, da Vinci changed the menu __________.",
+      "choices": [
+        "charge / completely / kitchen / took",
+        "charge / completely / took / kitchen",
+        "charge / kitchen / completely / took",
+        "charge / kitchen / took / completely",
+        "took / charge / kitchen / completely"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'took / charge / kitchen / completely'이다. 완성 문장은 'When he took charge of the kitchen, da Vinci changed the menu completely.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 5,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He made __________ but artistic __________ like fish with a few carrot __________.",
+      "choices": [
+        "simple / dishes / slices",
+        "dishes / simple / slices",
+        "dishes / slices / simple",
+        "simple / dishes / slicess",
+        "simple / dishess / slices"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'simple / dishes / slices'이다. 완성 문장은 'He made simple but artistic dishes like fish with a few carrot slices.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 6,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Some dishes were __________ decorated with flowers. Customers, __________, were __________ because they were used to dishes with big __________ of meat. As a result, da Vinci lost his job.",
+      "choices": [
+        "even / however / servings / unhappy",
+        "even / however / unhappy / servings",
+        "even / however / unhappy / servingss",
+        "even / however / unhappys / servings",
+        "even / howevers / unhappy / servings"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'even / however / unhappy / servings'이다. 완성 문장은 'Some dishes were even decorated with flowers. Customers, however, were unhappy because they were used to dishes with big servings of meat. As a result, da Vinci lost his job.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 7,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "A few __________ later, da Vinci __________ a restaurant __________ his friend Sandro Botticelli.",
+      "choices": [
+        "by / opened / years",
+        "opened / with / years",
+        "years / opened / with",
+        "opened / years / with",
+        "with / open / years"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'years / opened / with'이다. 완성 문장은 'A few years later, da Vinci opened a restaurant with his friend Sandro Botticelli.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 8,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He wanted to create a __________ where people could try his __________ __________.",
+      "choices": [
+        "food / innovation / place",
+        "food / innovative / place",
+        "food / innovative / places",
+        "place / innovative / food",
+        "food / place / innovative"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'place / innovative / food'이다. 완성 문장은 'He wanted to create a place where people could try his innovative food.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 9,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "They put __________ a __________ painted sign and made a __________ written menu.",
+      "choices": [
+        "beautifully / uniquely / up",
+        "beautifully / up / uniquely",
+        "uniquely / beautifully / up",
+        "uniquely / beautifully / ups",
+        "up / beautifully / uniquely"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'up / beautifully / uniquely'이다. 완성 문장은 'They put up a beautifully painted sign and made a uniquely written menu.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 10,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Da Vinci __________ that people would soon appreciate his __________ cooking. __________, that never happened.",
+      "choices": [
+        "believed / creative / Unfortunately",
+        "Unfortunately / believed / creative",
+        "Unfortunately / creative / believed",
+        "Unfortunately / creative / believeds",
+        "Unfortunately / creatives / believed"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'believed / creative / Unfortunately'이다. 완성 문장은 'Da Vinci believed that people would soon appreciate his creative cooking. Unfortunately, that never happened.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 11,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "In the __________ 1480s, da Vinci __________ to work __________ Ludovico Sforza in Milan.",
+      "choices": [
+        "began / early / for",
+        "early / began / for",
+        "began / for / early",
+        "early / began / fors",
+        "early / begans / for"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'early / began / for'이다. 완성 문장은 'In the early 1480s, da Vinci began to work for Ludovico Sforza in Milan.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 12,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He was __________ many __________ __________, such as a musician, a painter, and an engineer. He was also put in __________ of the kitchen.",
+      "choices": [
+        "charge / different / given / roles",
+        "charge / different / roles / given",
+        "given / different / roles / charge",
+        "charge / given / different / roles",
+        "charge / given / roles / different"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'given / different / roles / charge'이다. 완성 문장은 'He was given many different roles, such as a musician, a painter, and an engineer. He was also put in charge of the kitchen.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 13,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He was __________ to be given another __________ to pursue his __________ for cooking.",
+      "choices": [
+        "chance / happy / passion",
+        "chance / passion / happy",
+        "happy / chance / passions",
+        "happy / chance / passion",
+        "happy / chances / passion"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'happy / chance / passion'이다. 완성 문장은 'He was happy to be given another chance to pursue his passion for cooking.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 14,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Da Vinci did not stop __________ cooking creative dishes. He wanted to cook __________ more quickly and easily. __________, he invented new machines for his kitchen.",
+      "choices": [
+        "Thus / at / much",
+        "Thus / much / at",
+        "Thus / much / ats",
+        "Thus / muchs / at",
+        "at / much / Thus"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'at / much / Thus'이다. 완성 문장은 'Da Vinci did not stop at cooking creative dishes. He wanted to cook much more quickly and easily. Thus, he invented new machines for his kitchen.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 15,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He created __________ that could crush __________ and pull __________.",
+      "choices": [
+        "machines / vegetables / spaghetti",
+        "machines / spaghetti / vegetables",
+        "machines / vegetables / spaghettis",
+        "machines / vegetabless / spaghetti",
+        "machiness / vegetables / spaghetti"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'machines / vegetables / spaghetti'이다. 완성 문장은 'He created machines that could crush vegetables and pull spaghetti.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 16,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He __________ made a __________ that could scare __________ away from the water tank.",
+      "choices": [
+        "device / even / frogs",
+        "even / device / frogs",
+        "device / frogs / even",
+        "even / device / frogss",
+        "even / devices / frogs"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'even / device / frogs'이다. 완성 문장은 'He even made a device that could scare frogs away from the water tank.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 17,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Surely, they were all very __________, but most of them were too __________ or too __________ to use.",
+      "choices": [
+        "big / difficult / innovative",
+        "big / innovative / difficult",
+        "innovative / big / difficult",
+        "difficult / big / innovation",
+        "difficult / big / innovative"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'innovative / big / difficult'이다. 완성 문장은 'Surely, they were all very innovative, but most of them were too big or too difficult to use.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 18,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "In 1495, Sforza asked da Vinci to make a __________ painting, which was based on the __________ __________ of Jesus, on the wall of a __________ in Milan.",
+      "choices": [
+        "Last / Supper / church / grand",
+        "Last / Supper / grand / church",
+        "Last / church / Supper / grand",
+        "grand / Last / Supper / church",
+        "Last / church / grand / Supper"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'grand / Last / Supper / church'이다. 완성 문장은 'In 1495, Sforza asked da Vinci to make a grand painting, which was based on the Last Supper of Jesus, on the wall of a church in Milan.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 19,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Da Vinci __________ took on the __________ because he had always been interested in __________.",
+      "choices": [
+        "food / gladly / project",
+        "food / project / gladly",
+        "food / project / gladlys",
+        "food / projects / gladly",
+        "gladly / project / food"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'gladly / project / food'이다. 완성 문장은 'Da Vinci gladly took on the project because he had always been interested in food.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 20,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He spent a lot of __________ cooking __________ __________ of food to decide what to put on the __________ in his picture.",
+      "choices": [
+        "time / all / kinds / table",
+        "all / kinds / table / time",
+        "all / kinds / time / table",
+        "all / table / kinds / time",
+        "all / table / time / kinds"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'time / all / kinds / table'이다. 완성 문장은 'He spent a lot of time cooking all kinds of food to decide what to put on the table in his picture.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 21,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "\"Da Vinci has wasted his __________ in the kitchen for over a __________. That's the __________ why he hasn't finished the painting __________,\" complained the people from the church to Sforza.",
+      "choices": [
+        "reason / time / year / yet",
+        "time / year / reason / yet",
+        "reason / time / yet / year",
+        "reason / year / time / yet",
+        "reason / year / yet / time"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'time / year / reason / yet'이다. 완성 문장은 '\"Da Vinci has wasted his time in the kitchen for over a year. That's the reason why he hasn't finished the painting yet,\" complained the people from the church to Sforza.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 22,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "__________ da Vinci never became a __________ __________, he showed __________ interest in cooking throughout his life.",
+      "choices": [
+        "Although / cook / great / successful",
+        "Although / cook / successful / great",
+        "Although / successful / cook / great",
+        "Although / great / cook / successful",
+        "Although / great / successful / cook"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'Although / successful / cook / great'이다. 완성 문장은 'Although da Vinci never became a successful cook, he showed great interest in cooking throughout his life.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 23,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "He was __________ __________ a great painter but __________ a creative cook.",
+      "choices": [
+        "also / not / only",
+        "also / only / not",
+        "also / only / nots",
+        "not / only / also",
+        "also / onlys / not"
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'not / only / also'이다. 완성 문장은 'He was not only a great painter but also a creative cook.'이다."
+    },
+    {
+      "pattern": "p1",
+      "no": 24,
+      "type": "문법",
+      "prompt": "다음 빈칸에 들어갈 말을 순서대로 바르게 나열한 것은?",
+      "passage": "Now that you know the __________ of da Vinci's __________ for cooking, you will never look at The Last Supper the __________ way again.",
+      "choices": [
+        "passion / same / secret",
+        "passion / secret / same",
+        "same / passion / secret",
+        "same / passion / secrets",
+        "secret / passion / same"
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "문맥과 문법에 맞는 순서는 'secret / passion / same'이다. 완성 문장은 'Now that you know the secret of da Vinci's passion for cooking, you will never look at The Last Supper the same way again.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 1,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Leonardo da Vinci are known as one of the greatest painters of all time.",
+        "Leonardo Vinci da is known as one of the greatest painters of all time.",
+        "Leonardo da is Vinci known as one of the greatest painters of all time.",
+        "Leonardo da Vinci is known as one of the greatest painters of all time.",
+        "Leonardo da Vinci known is as one of the greatest painters of all time."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Leonardo da Vinci is known as one of the greatest painters of all time.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 2,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He were also a great inventor, scientist, and musician. Very few people, however, know that da Vinci was also a creative cook.",
+        "He was also a great inventor, scientist, and musician. Very few people, however, know that da Vinci was also a creative cook.",
+        "He was also a great inventor, scientist, but and musician. Very few people, however, know that da Vinci was also a creative cook.",
+        "He was also a great inventor, scientist, and musician. Very few people, however, know what da Vinci was also a creative cook.",
+        "He was also the a great inventor, scientist, and musician. Very few people, however, know that da Vinci was also a creative cook."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He was also a great inventor, scientist, and musician. Very few people, however, know that da Vinci was also a creative cook.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 3,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "In 1473, twenty-year-old da Vinci worked as the a cook at a restaurant in Florence, Italy.",
+        "In twenty-year-old 1473, da Vinci worked as a cook at a restaurant in Florence, Italy.",
+        "In 1473, da twenty-year-old Vinci worked as a cook at a restaurant in Florence, Italy.",
+        "In 1473, twenty-year-old Vinci da worked as a cook at a restaurant in Florence, Italy.",
+        "In 1473, twenty-year-old da Vinci worked as a cook at a restaurant in Florence, Italy."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'In 1473, twenty-year-old da Vinci worked as a cook at a restaurant in Florence, Italy.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 4,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "When took he charge of the kitchen, da Vinci changed the menu completely.",
+        "When he charge took of the kitchen, da Vinci changed the menu completely.",
+        "When he took charge of the kitchen, da Vinci changed the menu completely.",
+        "When he took of charge the kitchen, da Vinci changed the menu completely.",
+        "When he took charge the of kitchen, da Vinci changed the menu completely."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'When he took charge of the kitchen, da Vinci changed the menu completely.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 5,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He made simple but artistic dishes like fish with a few carrot slices.",
+        "He made simple but artistic dishes like fish with the a few carrot slices.",
+        "He made simple but artistic dishes like fish by with a few carrot slices.",
+        "He simple made but artistic dishes like fish with a few carrot slices.",
+        "He made but simple artistic dishes like fish with a few carrot slices."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He made simple but artistic dishes like fish with a few carrot slices.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 6,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Some dishes were even decorated with flowers. Customers, however, were unhappy because they were used for to dishes with big servings of meat. As a result, da Vinci lost his job.",
+        "Some dishes were even decorated with flowers. Customers, however, were unhappy because they were used to dishes with big servings of meat. As the a result, da Vinci lost his job.",
+        "Some dishes were even decorated by with flowers. Customers, however, were unhappy because they were used to dishes with big servings of meat. As a result, da Vinci lost his job.",
+        "Some dishes were even decorated with flowers. Customers, however, were unhappy because they were used to dishes with big servings of meat. As a result, da Vinci lost his job.",
+        "Some were dishes even decorated with flowers. Customers, however, were unhappy because they were used to dishes with big servings of meat. As a result, da Vinci lost his job."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Some dishes were even decorated with flowers. Customers, however, were unhappy because they were used to dishes with big servings of meat. As a result, da Vinci lost his job.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 7,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "A few years later, da Vinci opened the a restaurant with his friend Sandro Botticelli.",
+        "A few years later, da Vinci opened a restaurant with his friend Sandro Botticelli.",
+        "A few years later, da Vinci opened a restaurant by with his friend Sandro Botticelli.",
+        "A years few later, da Vinci opened a restaurant with his friend Sandro Botticelli.",
+        "A few later, years da Vinci opened a restaurant with his friend Sandro Botticelli."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'A few years later, da Vinci opened a restaurant with his friend Sandro Botticelli.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 8,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He wanted for to create a place where people could try his innovative food.",
+        "He wanted to create the a place where people could try his innovative food.",
+        "He to wanted create a place where people could try his innovative food.",
+        "He wanted create to a place where people could try his innovative food.",
+        "He wanted to create a place where people could try his innovative food."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He wanted to create a place where people could try his innovative food.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 9,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "They put up a beautifully painted sign but and made a uniquely written menu.",
+        "They put up the a beautifully painted sign and made a uniquely written menu.",
+        "They put up a beautifully painted sign and made a uniquely written menu.",
+        "They up put a beautifully painted sign and made a uniquely written menu.",
+        "They put a up beautifully painted sign and made a uniquely written menu."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'They put up a beautifully painted sign and made a uniquely written menu.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 10,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Da Vinci believed that people would soon appreciate his creative cooking. Unfortunately, that never happened.",
+        "Da Vinci believed what people would soon appreciate his creative cooking. Unfortunately, that never happened.",
+        "Da believed Vinci that people would soon appreciate his creative cooking. Unfortunately, that never happened.",
+        "Da Vinci that believed people would soon appreciate his creative cooking. Unfortunately, that never happened.",
+        "Da Vinci believed people that would soon appreciate his creative cooking. Unfortunately, that never happened."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Da Vinci believed that people would soon appreciate his creative cooking. Unfortunately, that never happened.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 11,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "In the early 1480s, da Vinci began for to work for Ludovico Sforza in Milan.",
+        "In early the 1480s, da Vinci began to work for Ludovico Sforza in Milan.",
+        "In the 1480s, early da Vinci began to work for Ludovico Sforza in Milan.",
+        "In the early 1480s, da Vinci began to work for Ludovico Sforza in Milan.",
+        "In the early da 1480s, Vinci began to work for Ludovico Sforza in Milan."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'In the early 1480s, da Vinci began to work for Ludovico Sforza in Milan.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 12,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He were given many different roles, such as a musician, a painter, and an engineer. He was also put in charge of the kitchen.",
+        "He was given many different roles, such as a musician, a painter, and an engineer. He was also put in charge of the kitchen.",
+        "He was given many different roles, such as a musician, a painter, but and an engineer. He was also put in charge of the kitchen.",
+        "He was given many different roles, such as the a musician, a painter, and an engineer. He was also put in charge of the kitchen.",
+        "He given was many different roles, such as a musician, a painter, and an engineer. He was also put in charge of the kitchen."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He was given many different roles, such as a musician, a painter, and an engineer. He was also put in charge of the kitchen.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 13,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He were happy to be given another chance to pursue his passion for cooking.",
+        "He was happy for to be given another chance to pursue his passion for cooking.",
+        "He happy was to be given another chance to pursue his passion for cooking.",
+        "He was to happy be given another chance to pursue his passion for cooking.",
+        "He was happy to be given another chance to pursue his passion for cooking."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He was happy to be given another chance to pursue his passion for cooking.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 14,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Da Vinci did not stop at cooking creative dishes. He wanted for to cook much more quickly and easily. Thus, he invented new machines for his kitchen.",
+        "Da Vinci did not stop at cooking creative dishes. He wanted to cook much more quickly but and easily. Thus, he invented new machines for his kitchen.",
+        "Da Vinci did not stop at cooking creative dishes. He wanted to cook much more quickly and easily. Thus, he invented new machines for his kitchen.",
+        "Da Vinci did no stop at cooking creative dishes. He wanted to cook much more quickly and easily. Thus, he invented new machines for his kitchen.",
+        "Da did Vinci not stop at cooking creative dishes. He wanted to cook much more quickly and easily. Thus, he invented new machines for his kitchen."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Da Vinci did not stop at cooking creative dishes. He wanted to cook much more quickly and easily. Thus, he invented new machines for his kitchen.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 15,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He created machines that could crush vegetables and pull spaghetti.",
+        "He created machines that could crush vegetables but and pull spaghetti.",
+        "He created machines what could crush vegetables and pull spaghetti.",
+        "He machines created that could crush vegetables and pull spaghetti.",
+        "He created that machines could crush vegetables and pull spaghetti."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He created machines that could crush vegetables and pull spaghetti.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 16,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He even made a device what could scare frogs away from the water tank.",
+        "He even made the a device that could scare frogs away from the water tank.",
+        "He made even a device that could scare frogs away from the water tank.",
+        "He even made a device that could scare frogs away from the water tank.",
+        "He even a made device that could scare frogs away from the water tank."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He even made a device that could scare frogs away from the water tank.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 17,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Surely, they were all very innovative, but most of them were too big or too difficult for to use.",
+        "Surely, they were all very innovative, but most of them were too big or too difficult to use.",
+        "Surely, were they all very innovative, but most of them were too big or too difficult to use.",
+        "Surely, they all were very innovative, but most of them were too big or too difficult to use.",
+        "Surely, they were very all innovative, but most of them were too big or too difficult to use."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Surely, they were all very innovative, but most of them were too big or too difficult to use.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 18,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "In 1495, Sforza asked da Vinci to make a grand painting, which were based on the Last Supper of Jesus, on the wall of a church in Milan.",
+        "In 1495, Sforza asked da Vinci for to make a grand painting, which was based on the Last Supper of Jesus, on the wall of a church in Milan.",
+        "In 1495, Sforza asked da Vinci to make the a grand painting, which was based on the Last Supper of Jesus, on the wall of a church in Milan.",
+        "In Sforza 1495, asked da Vinci to make a grand painting, which was based on the Last Supper of Jesus, on the wall of a church in Milan.",
+        "In 1495, Sforza asked da Vinci to make a grand painting, which was based on the Last Supper of Jesus, on the wall of a church in Milan."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'In 1495, Sforza asked da Vinci to make a grand painting, which was based on the Last Supper of Jesus, on the wall of a church in Milan.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 19,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Da gladly Vinci took on the project because he had always been interested in food.",
+        "Da Vinci took gladly on the project because he had always been interested in food.",
+        "Da Vinci gladly took on the project because he had always been interested in food.",
+        "Da Vinci gladly on took the project because he had always been interested in food.",
+        "Da Vinci gladly took the on project because he had always been interested in food."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Da Vinci gladly took on the project because he had always been interested in food.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 20,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He spent a lot of time cooking all kinds of food to decide what to put on the table in his picture.",
+        "He spent a lot of time cooking all kinds of food for to decide what to put on the table in his picture.",
+        "He spent the a lot of time cooking all kinds of food to decide what to put on the table in his picture.",
+        "He a spent lot of time cooking all kinds of food to decide what to put on the table in his picture.",
+        "He spent lot a of time cooking all kinds of food to decide what to put on the table in his picture."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He spent a lot of time cooking all kinds of food to decide what to put on the table in his picture.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 21,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "\"Da Vinci has wasted his time in the kitchen for over a year. That's the reason why he hasn't finished the painting yet,\" complained the people from the church for to Sforza.",
+        "\"Da Vinci has wasted his time in the kitchen for over the a year. That's the reason why he hasn't finished the painting yet,\" complained the people from the church to Sforza.",
+        "\"Da has Vinci wasted his time in the kitchen for over a year. That's the reason why he hasn't finished the painting yet,\" complained the people from the church to Sforza.",
+        "\"Da Vinci has wasted his time in the kitchen for over a year. That's the reason why he hasn't finished the painting yet,\" complained the people from the church to Sforza.",
+        "\"Da Vinci wasted has his time in the kitchen for over a year. That's the reason why he hasn't finished the painting yet,\" complained the people from the church to Sforza."
+      ],
+      "answer": [
+        4
+      ],
+      "explanation": "올바른 어순으로 배열하면 '\"Da Vinci has wasted his time in the kitchen for over a year. That's the reason why he hasn't finished the painting yet,\" complained the people from the church to Sforza.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 22,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Although da Vinci never became the a successful cook, he showed great interest in cooking throughout his life.",
+        "Although da Vinci never became a successful cook, he showed great interest in cooking throughout his life.",
+        "Although Vinci da never became a successful cook, he showed great interest in cooking throughout his life.",
+        "Although da never Vinci became a successful cook, he showed great interest in cooking throughout his life.",
+        "Although da Vinci became never a successful cook, he showed great interest in cooking throughout his life."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Although da Vinci never became a successful cook, he showed great interest in cooking throughout his life.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 23,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "He were not only a great painter but also a creative cook.",
+        "He was not only the a great painter but also a creative cook.",
+        "He was no only a great painter but also a creative cook.",
+        "He not was only a great painter but also a creative cook.",
+        "He was not only a great painter but also a creative cook."
+      ],
+      "answer": [
+        5
+      ],
+      "explanation": "올바른 어순으로 배열하면 'He was not only a great painter but also a creative cook.'이다."
+    },
+    {
+      "pattern": "p2",
+      "no": 24,
+      "type": "문법",
+      "prompt": "주어진 어구를 올바르게 배열한 문장을 고르시오.",
+      "passage": "",
+      "choices": [
+        "Now what you know the secret of da Vinci's passion for cooking, you will never look at The Last Supper the same way again.",
+        "Now you that know the secret of da Vinci's passion for cooking, you will never look at The Last Supper the same way again.",
+        "Now that you know the secret of da Vinci's passion for cooking, you will never look at The Last Supper the same way again.",
+        "Now that know you the secret of da Vinci's passion for cooking, you will never look at The Last Supper the same way again.",
+        "Now that you the know secret of da Vinci's passion for cooking, you will never look at The Last Supper the same way again."
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "올바른 어순으로 배열하면 'Now that you know the secret of da Vinci's passion for cooking, you will never look at The Last Supper the same way again.'이다."
+    }
+  ]
+}
