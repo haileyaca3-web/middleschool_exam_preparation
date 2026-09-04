@@ -29,17 +29,39 @@
   .top .ti{font-size:14px;font-weight:800;letter-spacing:-.02em}
   .top .ti small{display:block;font-size:11px;color:var(--gold-d);font-weight:800;margin-top:1px;letter-spacing:.02em}
   .top .timer{margin-left:12px;display:none;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--gold);
-    border-radius:99px;padding:7px 17px;font-weight:800;font-size:16px;color:var(--navy)}
+    border-radius:99px;padding:7px 17px;font-weight:800;font-size:16px;color:var(--navy);white-space:nowrap;flex-shrink:0}
   .top .timer.warn{color:var(--bad);border-color:var(--bad)}
-  .top .timer .lbl{font-size:11px;color:var(--ink-soft);font-weight:700}
+  .top .timer .lbl{font-size:11px;color:var(--ink-soft);font-weight:700;white-space:nowrap}
   .top .back{margin-left:auto;background:#fff;border:1.5px solid var(--line);border-radius:11px;
-    padding:9px 16px;font-family:inherit;font-weight:700;font-size:14px;color:var(--ink-soft);cursor:pointer}
+    padding:9px 16px;font-family:inherit;font-weight:700;font-size:14px;color:var(--ink-soft);cursor:pointer;white-space:nowrap;flex-shrink:0}
+  .top .ti{min-width:0}
   .body{flex:1;overflow-y:auto;padding:8px 26px 30px;-webkit-overflow-scrolling:touch}
   .screen{display:none;animation:fade .3s ease}
   .screen.on{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-  h1{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
-  .sub{color:var(--ink-soft);font-size:16px;margin-bottom:26px}
+  h1{font-size:30px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px;word-break:keep-all}
+  .sub{color:var(--ink-soft);font-size:16px;margin-bottom:26px;word-break:keep-all}
+  @media (max-width:680px){
+    .top{padding:12px 15px;gap:10px}
+    .top .ti{font-size:13px}
+    .top .ti small{font-size:10px;letter-spacing:0}
+    .top .back{padding:8px 12px;font-size:13px}
+    .top .timer{padding:6px 12px;font-size:15px;margin-left:8px}
+    .body{padding:6px 15px 26px}
+    h1{font-size:23px}
+    .sub{font-size:14px;margin-bottom:18px}
+    .bigcards{gap:12px}
+    .bigcard{padding:20px 14px;border-radius:18px}
+    .bigcard .nm{font-size:18px}
+    .bigcard .ds{font-size:13px}
+    .bigcard .stp{font-size:12px}
+    .bigcards.grade .bigcard{min-height:120px}
+    .bigcards.grade .bigcard .nm{font-size:20px}
+    .bigcards.grade{grid-template-columns:1fr 1fr 1fr!important}
+    .bigcards.lessonwrap{grid-template-columns:1fr 1fr!important}
+    .qcard{padding:20px 16px!important}
+    .stem{font-size:18px!important;word-break:keep-all}
+  }
   /* 큰 선택 카드 */
   .bigcards{display:grid;gap:18px}
   .bigcards.c2{grid-template-columns:1fr 1fr}
@@ -77,7 +99,7 @@
     gap:9px;min-height:148px;justify-content:center}
   .bigcard:active{transform:scale(.98)}
   .bigcard:hover{border-color:var(--gold);box-shadow:0 12px 32px rgba(198,162,74,.22)}
-  .bigcard .nm{font-size:25px;font-weight:800;letter-spacing:-.02em}
+  .bigcard .nm{font-size:25px;font-weight:800;letter-spacing:-.02em;word-break:keep-all;overflow-wrap:break-word}
   .bigcard .ds{font-size:16px;color:var(--ink-soft)}
   .bigcard .stp{font-size:13px;font-weight:800;color:var(--navy);background:var(--gold-soft);
     padding:5px 13px;border-radius:99px;align-self:flex-start}
@@ -600,7 +622,7 @@ function scLesson(){
   const list=curLessons().filter(l=>l.grade===ST.grade);
   const n=list.length, cols = n<=3 ? n : (n===4?2:3);
   show(`<h1>교재 · 레슨 선택</h1><p class="sub">${ST.grade.replace('중','중학교 ')}학년 · 어떤 교재를 풀까요?</p>
-    <div class="bigcards" style="grid-template-columns:repeat(${cols},1fr)">
+    <div class="bigcards lessonwrap" style="grid-template-columns:repeat(${cols},1fr)">
       ${list.map(l=>`<button class="bigcard" onclick="pickLesson('${l.id}')">
         <div class="nm">${l.textbook}</div><div class="ds">${l.lesson}${l.hasWorkbook?'':' · 문법 시험만'}</div></button>`).join('')}
     </div>`);
